@@ -21,7 +21,7 @@ export class HomeComponent {
 
   constructor(public utils: UtilsService) {
     FlightService.getFlights(0, 3)
-      .then(rsp => this.flights = rsp.data.content)
+      .then(rsp => this.flights = rsp.data.slice(0,10))
       .catch((e: AxiosError) => this.error = `${e.code}: ${e.message}`)
   }
 }

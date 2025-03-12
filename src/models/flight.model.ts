@@ -1,17 +1,19 @@
+import { ActorModel } from "./actor.model"
+import { GenreModel } from "./genre.model"
+
 export interface FlightModel {
-    id: number
-    type: {
-        id: number
-        name: string
-    }
-    flightKey: string
-    flightNumber: string
-    destination: string
-    scheduledAt: string
-    estimatedAt: null | string
-    connectedType: string
-    connectedFlight: string,
-    plane: string
-    gate: null | string
-    terminal: string
+    movieId: number
+    directorId: number
+    title: string
+    description: string
+    shortDescription : string
+    poster: string
+    startDate : string
+    runTime: number
+    movieActors : {
+        actor : ActorModel
+    }[]
+    movieGenres: {
+        genre : GenreModel
+    }[]
 }
