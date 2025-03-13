@@ -7,38 +7,7 @@
     </mat-card>
 </div>
 
-<div class="carousel">
-    <div class="slides" [style.transform]="'translateX(' + (-currentSlide * 100) + '%)'">
-        <div class="slide" *ngFor="let movie of mvs; let i = index">
-            <img [src]="movie.poster" [alt]="movie.title">
-        </div>
-    </div>
-    <button class="prev" (click)="prevSlide()">&#10094;</button>
-    <button class="next" (click)="nextSlide()">&#10095;</button>
-</div>
 
-
-<form class="example-form">
-    <mat-form-field class="example-full-width">
-      <mat-label><i class="fa-solid fa-magnifying-glass"></i>  PRETRAGA</mat-label>
-      <input matInput #message maxlength="256" placeholder="Pretražite filmove...">
-      <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
-    </mat-form-field>
-  </form>
-
-<div *ngIf="movies" class="container">
-    <div class="movie-row">
-        <mat-card class="example-card" appearance="outlined" *ngFor="let movie of movies">
-            <img mat-card-image [src]="movie.poster" [alt]="movie.title">
-            <mat-card-content>
-                <h1 class="naslov">{{movie.title}}</h1>
-                <div class="movie-details">
-                    <p><strong>Scheduled at:</strong> {{formatDate(movie.startDate)}}</p>
-                </div>
-            </mat-card-content>
-        </mat-card>
-    </div>
-</div>
 
 <app-loading *ngIf="!movies && !error" />
 
