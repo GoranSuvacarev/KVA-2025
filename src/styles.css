@@ -1,8 +1,9 @@
 html,
 body {
-    height: 100%;
-    background-color: #1e2124;
-    color: white;
+  height: 100%;
+  background-color: #1e2124;
+  color: white;
+  overflow: hidden;
 }
 
 body, p, h1, h2, h3, h4, h5, h6, span, a {
@@ -10,49 +11,46 @@ body, p, h1, h2, h3, h4, h5, h6, span, a {
 }
 
 a {
-    color: gray;
+  color: white;
+  text-decoration: none
 }
 
 body {
-    margin: 0;
+  margin: 0;
 }
 
 .container {
-    margin-top: 30px;
-    display: flex;
-    justify-content: center;
-    gap: 10px;
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
 }
 
 .example-card {
-    max-width: 400px;
+  max-width: 400px;
 }
 
 .loading {
-    text-align: center;
-    width: 600px;
-    height: 300px;
-    align-items: center;
+  text-align: center;
+  width: 600px;
+  height: 300px;
+  align-items: center;
 }
 
 .wrapper {
-    margin-top: 30px;
-    max-width: 80%;
-    margin-left: auto;
-    margin-right: auto;
+  margin-top: 30px;
+  max-width: 80%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .auth-card {
-    margin-top: 30px;
-    max-width: 540px;
-    margin-left: auto;
-    margin-right: auto;
+  margin-top: 30px;
+  max-width: 540px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .full-width {
-    width: 100%;
-}
-
-.cyan {
-    color: #00dddd
+  width: 100%;
 }
