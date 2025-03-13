@@ -11,9 +11,6 @@
     <div class="slides" [style.transform]="'translateX(' + (-currentSlide * 100) + '%)'">
         <div class="slide" *ngFor="let movie of mvs; let i = index">
             <img [src]="movie.poster" [alt]="movie.title">
-            <div class="overlay">
-                <h2>USKORO</h2>
-            </div>
         </div>
     </div>
     <button class="prev" (click)="prevSlide()">&#10094;</button>
