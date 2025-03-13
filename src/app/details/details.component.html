@@ -1,35 +1,35 @@
-<div class="wrapper" *ngIf="flight">
-    <h1>{{flight.title}}</h1>
-    <div class="flight-content">
-        <img [src]="flight.poster" [alt]="flight.title">
-        <mat-card class="flight-card" appearance="outlined">
+<div class="wrapper" *ngIf="movie">
+    <h1>{{movie.title}}</h1>
+    <div class="movie-content">
+        <img [src]="movie.poster" [alt]="movie.title">
+        <mat-card class="movie-card" appearance="outlined">
             <mat-card-content>
-                <h2>Flight Details</h2>
+                <h2>movie Details</h2>
                 <mat-list role="list">
                     <mat-list-item>
                         <span matListItemTitle>Scheduled At:</span>
-                        <span matListItemLine>{{flight.startDate}}</span>
+                        <span matListItemLine>{{movie.director.name}}</span>
                          <span matListItemIcon>
                             <i class="fa-solid fa-clock-rotate-left"></i>
                          </span>
                     </mat-list-item>
                     <mat-list-item>
-                        <span matListItemTitle>Flight Number:</span>
-                        <span matListItemLine>{{flight.movieId}}</span>
+                        <span matListItemTitle>movie Number:</span>
+                        <span matListItemLine>{{movie.movieId}}</span>
                         <span matListItemIcon>
                             <i class="fa-solid fa-plane-circle-exclamation"></i>
                         </span>
                     </mat-list-item>
                     <mat-list-item>
                         <span matListItemTitle>Airplane Model:</span>
-                        <span matListItemLine>{{flight.runTime}}</span>
+                        <span matListItemLine>{{movie.runTime}}</span>
                         <span matListItemIcon>
                             <i class="fa-solid fa-font-awesome"></i>
                         </span>
                     </mat-list-item>
                     <mat-list-item>
-                        <span matListItemTitle>Flight Type:</span>
-                        <span matListItemLine>{{flight.description}}</span>
+                        <span matListItemTitle>movie Type:</span>
+                        <span matListItemLine>{{movie.description}}</span>
                         <span matListItemIcon>
                             <i class="fa-solid fa-circle-exclamation"></i>
                         </span>
@@ -37,19 +37,19 @@
                 </mat-list>
             </mat-card-content>
             <mat-card-actions>
-                <a mat-button [routerLink]="['/details/'+flight.movieId+'/order']">
+                <a mat-button [routerLink]="['/details/'+movie.movieId+'/order']">
                     <i class="fa-solid fa-cart-shopping"></i> Book Now
                 </a>
             </mat-card-actions>
         </mat-card>
     </div>
-    <div class="flight-content">
+    <div class="movie-content">
         <!-- 
-            <mat-card class="flight-map">
+            <mat-card class="movie-map">
             <iframe [src]="generateMapLink() | safe" width="860" height="600"></iframe>
             </mat-card>
         -->
     </div>
 </div>
 
-<app-loading *ngIf="!flight" />
+<app-loading *ngIf="!movie" />

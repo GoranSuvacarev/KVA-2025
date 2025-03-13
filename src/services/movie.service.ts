@@ -11,18 +11,20 @@ const client = axios.create({
     }
 })
 
-export class FlightService {
-    static async getFlights(page: number = 0, size: number = 10) {
+export class MovieService {
+    static async getMovies() {
         return client.request({
             url: '/movie',
             method: 'GET',
             params: {
-                'page': page,
-                'size': size,
                 'sort': 'scheduledAt,asc',
                 'type': 'departure'
             }
         })
+    }
+
+    static async getMovieById(id: number) {
+        return client.get(`/movie/${id}`)
     }
 
     static async getFlightList() {
@@ -33,10 +35,6 @@ export class FlightService {
                 'type': 'departure'
             }
         })
-    }
-
-    static async getFlightById(id: number) {
-        return client.get(`/movie/${id}`)
     }
 
     static async getDestinations() {
