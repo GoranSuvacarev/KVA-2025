@@ -5,13 +5,16 @@ body {
     color: white;
 }
 
+body, p, h1, h2, h3, h4, h5, h6, span, a {
+  font-family: Palatino Linotype, "Palatino Linotype", sans-serif !important;
+}
+
 a {
     color: gray;
 }
 
 body {
     margin: 0;
-    font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
 .container {

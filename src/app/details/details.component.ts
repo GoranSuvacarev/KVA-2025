@@ -8,6 +8,7 @@ import { LoadingComponent } from "../loading/loading.component";
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
+import {AxiosError} from 'axios';
 
 @Component({
   selector: 'app-details',
@@ -18,6 +19,7 @@ import { MatButtonModule } from '@angular/material/button';
 export class DetailsComponent {
 
   public movie: MovieModel | null = null
+  public error: string | null = null
 
   public constructor(private route: ActivatedRoute, public utils: UtilsService) {
     route.params.subscribe(params => {
@@ -25,11 +27,7 @@ export class DetailsComponent {
         .then(rsp => {
           this.movie = rsp.data
         })
+        .catch((e: AxiosError) => this.error = `${e.code}: ${e.message}`)
     })
   }
-/*
-  public generateMapLink() {
-    return `https://www.google.com/maps?output=embed&q=${this.flight?.destination}`
-  }
-*/
 }
