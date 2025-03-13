@@ -1,0 +1,200 @@
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 20px;
+    padding-left: 150px;
+    width: 100% !important;
+}
+
+.movie-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 20px;
+    width: 100% !important;
+}
+
+.example-card {
+    flex: 0 0 calc(22% - 20px) !important;
+    max-width: calc(22% - 20px) !important;
+    box-sizing: border-box;
+    transition: transform 0.3s ease-in-out;
+    padding: 8px;
+    font-size: 0.8rem;
+    text-align: center;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.example-card img {
+    width: 100% !important;
+    height: auto !important;  /* Smanjena visina slike */
+    object-fit: cover !important;
+    object-fit: contain !important; /* Slika popunjava karticu sa mogućim sečenjem */
+    border-radius: 8px 8px 0 0;
+}
+
+.example-card:hover {
+    transform: scale(1.05);
+}
+
+.example-card {
+    width: 23%; 
+    box-sizing: border-box;
+}
+
+.movie-details {
+    display: flex;
+    flex-direction: column; 
+    gap: 15px; 
+}
+
+.naslov{
+    font-family:'Bebas Neue', sans-serif;
+}
+
+.movie-details p {
+    margin: 0;
+    display: block; 
+    font-family: 'Bebas Neue', sans-serif;
+}
+
+.movie-details p strong {
+    font-size: 1.1rem; 
+}
+
+.movie-details p {
+    font-size: 1.1rem;
+}
+
+.movie-details strong {
+    margin-right: 5px; 
+}
+
+.mat-card-content {
+    padding: 16px;
+}
+
+
+
+.carousel {
+    position: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+    overflow: hidden;
+    border-radius: 10px;
+    padding-left: 500px;
+}
+
+.slides {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: 100%;
+}
+
+.slide {
+    position: relative;
+    flex: 0 0 100%;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+.slide img {
+    width: 700px;
+    height: 800px;
+    object-position: top;
+    object-fit: contain; 
+   
+    object-position: center; 
+    border-radius: 10px;
+    background-color: black;
+    animation: fadeIn 1.2s ease-in-out;
+}
+
+
+
+.overlay {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    display: flex;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.767);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+@keyframes slideFade {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.overlay h2 {
+    color: white;
+    font-family: 'Bebas Neue', sans-serif;
+    margin: 0;
+    font-size: 40px;
+    margin-left: 50px;
+    text-transform: uppercase;
+    animation: slideFade 1s ease-in-out;
+    text-shadow: 0px 0px 12px rgba(255, 255, 255, 0.8);
+    
+}
+
+
+button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 24px;
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
+
+button:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+
+
+.example-form{
+    padding-left: 550px;
+    padding-top: 40px;
+}
+  
+  
+  

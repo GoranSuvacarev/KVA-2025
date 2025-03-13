@@ -1,35 +1,47 @@
 <div *ngIf="error" class="container">
     <mat-card class="loading" appearance="outlined" color="red">
         <mat-card-content>
-            <h1>Oops, an error occured!</h1>
+            <h1>Oops, an error occurred!</h1>
             <p style="color: red;">{{error}}</p>
         </mat-card-content>
     </mat-card>
 </div>
 
+<div class="carousel">
+    <div class="slides" [style.transform]="'translateX(' + (-currentSlide * 100) + '%)'">
+        <div class="slide" *ngFor="let movie of mvs; let i = index">
+            <img [src]="movie.poster" [alt]="movie.title">
+            <div class="overlay">
+                <h2>USKORO</h2>
+            </div>
+        </div>
+    </div>
+    <button class="prev" (click)="prevSlide()">&#10094;</button>
+    <button class="next" (click)="nextSlide()">&#10095;</button>
+</div>
+
+
+<form class="example-form">
+    <mat-form-field class="example-full-width">
+      <mat-label><i class="fa-solid fa-magnifying-glass"></i>  PRETRAGA</mat-label>
+      <input matInput #message maxlength="256" placeholder="Pretražite filmove...">
+      <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
+    </mat-form-field>
+  </form>
+
 <div *ngIf="movies" class="container">
-    <mat-card class="example-card" appearance="outlined" *ngFor="let movie of movies">
-        <img mat-card-image [src]="movie.poster" [alt]="movie.title">
-        <mat-card-content>
-            <h1>{{movie.title}}</h1>
-            <p>Scheduled at: {{movie.startDate}}</p>
-            <p>movie number: {{movie.runTime}}</p>
-            <p>Plane model: {{movie.shortDescription}}</p>
-            <p><strong>Genres:</strong>
-                <span *ngFor="let movieGenre of movie.movieGenres">
-                    {{ movieGenre.genre.name}}
-                </span>
-            </p>
-        </mat-card-content>
-        <mat-card-actions>
-            <a mat-button [routerLink]="['/details/', movie.movieId]">
-                <i class="fa-solid fa-arrow-up-right-from-square"></i> Details
-            </a>
-            <a mat-button [routerLink]="['/details/'+movie.movieId+'/order']">
-                <i class="fa-solid fa-cart-shopping"></i> Book Now
-            </a>
-        </mat-card-actions>
-    </mat-card>
+    <div class="movie-row">
+        <mat-card class="example-card" appearance="outlined" *ngFor="let movie of movies">
+            <img mat-card-image [src]="movie.poster" [alt]="movie.title">
+            <mat-card-content>
+                <h1 class="naslov">{{movie.title}}</h1>
+                <div class="movie-details">
+                    <p><strong>Scheduled at:</strong> {{formatDate(movie.startDate)}}</p>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
 </div>
 
 <app-loading *ngIf="!movies && !error" />
+
