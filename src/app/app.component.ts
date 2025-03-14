@@ -4,11 +4,10 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { NgIf } from '@angular/common';
 import { UserService } from '../services/user.service';
-import {FooterComponent} from './footer/footer.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, RouterLink, MatToolbarModule, MatButtonModule, NgIf, FooterComponent],
+  imports: [RouterOutlet, RouterLink, MatToolbarModule, MatButtonModule, NgIf],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

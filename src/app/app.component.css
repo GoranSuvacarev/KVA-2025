@@ -1,40 +1,47 @@
 .spacer {
-    flex: 1 1 auto;
+  flex: 1 1 auto;
 }
 
 mat-toolbar {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.2rem;
 }
 
-mat-toolbar {
-    font-size: 1.2rem;
-}
 
 mat-toolbar span {
-    font-size: 1.8rem;
+  font-size: 1.5rem;
 }
 
 mat-toolbar a {
-    font-size: 1.5rem;
+  font-size: 1.5rem;
 }
 
 mat-toolbar button {
-    font-size: 1.2rem;
+  font-size: 1.2rem;
 }
 
 mat-toolbar i {
-    margin-right: 8px;
-    font-size: 1.4rem;
+  margin-right: 8px;
+  font-size: 1.4rem;
 }
 
 mat-toolbar a:hover {
-    background-color: rgba(133, 120, 120, 0.1);
+  background-color: rgba(133, 120, 120, 0.1);
 }
 
 .logo {
-    width: 100px;
-    height: 70px;
-    margin-left: 5px;
-    vertical-align: middle;
+  width: 100px;
+  height: 70px;
+  margin-left: 5px;
+  vertical-align: middle;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
 }
