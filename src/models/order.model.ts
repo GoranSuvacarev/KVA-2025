@@ -1,10 +1,8 @@
 export interface OrderModel {
-    id: number
-    flightId: number
-    flightNumber: string
-    destination: string
-    count: number
-    pricePerItem: number
-    status: 'ordered' | 'paid' | 'canceled',
-    rating: null | boolean
+    id : number
+    title: string
+    runTime: number
+    scheduledAt: string
+    price: number
+    status: 'booked' | 'watched' | 'reviewed'
 }

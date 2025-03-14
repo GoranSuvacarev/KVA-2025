@@ -37,7 +37,7 @@
                 </mat-list>
             </mat-card-content>
             <mat-card-actions>
-                <a mat-button [routerLink]="['/details/'+movie.movieId+'/order']">
+                <a mat-button (click)="doOrder()">
                     <i class="fa-solid fa-cart-shopping"></i> Book Now
                 </a>
             </mat-card-actions>

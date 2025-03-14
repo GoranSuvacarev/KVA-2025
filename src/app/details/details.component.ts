@@ -8,6 +8,7 @@ import { LoadingComponent } from "../loading/loading.component";
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-details',
@@ -27,9 +28,17 @@ export class DetailsComponent {
         })
     })
   }
-/*
-  public generateMapLink() {
-    return `https://www.google.com/maps?output=embed&q=${this.flight?.destination}`
+
+  public doOrder() {
+    const result = UserService.createOrder({
+      id: new Date().getTime(),
+      title: this.movie!.title,
+      runTime: this.movie!.runTime,
+      scheduledAt: "2025-03-13 10:00",
+      price : 50,
+      status: 'booked'
+    })
+
+    result ? alert('Film uspesno dodat u korpu') : alert('An error occured while creating an order')
   }
-*/
 }

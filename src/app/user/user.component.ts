@@ -38,8 +38,6 @@ export class UserComponent {
 
   constructor(private router: Router) {
     if (!UserService.getActiveUser()) {
-      // Korisnik aplikacije nije ulogovan
-      // Vrati korisnika na homepage
       router.navigate(['/home'])
       return
     }
@@ -73,6 +71,7 @@ export class UserComponent {
     this.repeatPasswordValue = ''
   }
 
+/*
   public doPay(order: OrderModel) {
     if (UserService.changeOrderStatus('paid', order.id)) {
       this.user = UserService.getActiveUser()
@@ -90,4 +89,5 @@ export class UserComponent {
       this.user = UserService.getActiveUser()
     }
   }
+*/
 }

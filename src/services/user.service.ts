@@ -74,7 +74,7 @@ export class UserService {
         return false
     }
 
-    static changeOrderStatus(state: 'ordered' | 'paid' | 'canceled', id: number) {
+    static changeOrderStatus(state: 'watched' | 'reviewed', id: number) {
         const active = this.getActiveUser()
         if (active) {
             const arr = this.retrieveUsers()
@@ -93,6 +93,7 @@ export class UserService {
         return false
     }
 
+/*
     static changeRating(r: boolean, id: number) {
         const active = this.getActiveUser()
         if (active) {
@@ -111,7 +112,7 @@ export class UserService {
         }
         return false
     }
-
+*/
     static changePassword(newPassword: string): boolean {
 
         const arr = this.retrieveUsers()
