@@ -9,12 +9,17 @@
 <app-loading *ngIf="!movies && !error" />
 
 <div class="poster">
-  <img mat-card-image src="/poster.jpg">
+  <img mat-card-image src="/poster.jpg" class="poster_image">
 </div>
 
-
-<div style="height: 1000px">Test1</div>
-<span>Test2</span>
-
-
-
+<div *ngIf="movies" class="movies">
+  <mat-card class="movie" appearance="outlined" *ngFor="let movie of movies">
+    <img mat-card-image [src]="movie.poster" [alt]="movie.title">
+    <mat-card-content>
+      <h1 class="naslov">{{movie.title}}</h1>
+      <div class="movie-details">
+        <p><strong>Scheduled at:</strong> {{formatDate(movie.startDate)}}</p>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
