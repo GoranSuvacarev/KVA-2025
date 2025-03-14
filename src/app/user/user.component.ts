@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { UserService } from '../../services/user.service';
-import { Router, RouterLink } from '@angular/router';
+import { Router} from '@angular/router';
 import { NgIf } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -19,7 +19,6 @@ import { FormsModule } from '@angular/forms';
     MatButtonModule,
     MatCardModule,
     MatTableModule,
-    RouterLink,
     MatExpansionModule,
     MatAccordion,
     MatFormFieldModule,

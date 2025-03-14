@@ -12,7 +12,7 @@ import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-details',
-  imports: [NgIf, LoadingComponent, MatCardModule, MatListModule, MatButtonModule, RouterLink],
+  imports: [NgIf, LoadingComponent, MatCardModule, MatListModule, MatButtonModule],
   templateUrl: './details.component.html',
   styleUrl: './details.component.css'
 })
