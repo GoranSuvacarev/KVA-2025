@@ -7,7 +7,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { UtilsService } from '../../services/utils.service';
 import { LoadingComponent } from "../loading/loading.component";
-import { RouterLink } from '@angular/router';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {FormsModule} from '@angular/forms';
@@ -15,7 +14,7 @@ import {FormsModule} from '@angular/forms';
 
 @Component({
   selector: 'app-home',
-  imports: [NgIf, NgFor, MatButtonModule, MatCardModule, LoadingComponent, RouterLink,FormsModule, MatFormFieldModule, MatInputModule],
+  imports: [NgIf, NgFor, MatButtonModule, MatCardModule, LoadingComponent,FormsModule, MatFormFieldModule, MatInputModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
