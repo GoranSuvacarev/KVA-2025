@@ -8,10 +8,10 @@ import { LoadingComponent } from "../loading/loading.component";
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
-
+import { NgStyle } from '@angular/common';
 @Component({
   selector: 'app-details',
-  imports: [NgIf, LoadingComponent, MatCardModule, MatListModule, MatButtonModule, RouterLink],
+  imports: [NgIf, LoadingComponent, MatCardModule, MatListModule, MatButtonModule, RouterLink,NgStyle],
   templateUrl: './details.component.html',
   styleUrl: './details.component.css'
 })
@@ -32,4 +32,6 @@ export class DetailsComponent {
     return `https://www.google.com/maps?output=embed&q=${this.flight?.destination}`
   }
 */
+
+
 }
