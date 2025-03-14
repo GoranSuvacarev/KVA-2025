@@ -36,7 +36,8 @@ export class DetailsComponent {
       runTime: this.movie!.runTime,
       scheduledAt: "2025-03-13 10:00",
       price : 50,
-      status: 'booked'
+      status: 'booked',
+      rating : null
     })
 
     result ? alert('Film uspesno dodat u korpu') : alert('An error occured while creating an order')

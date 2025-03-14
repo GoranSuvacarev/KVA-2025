@@ -5,4 +5,5 @@ export interface OrderModel {
     scheduledAt: string
     price: number
     status: 'booked' | 'watched' | 'reviewed'
+    rating : boolean | null
 }

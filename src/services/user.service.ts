@@ -74,7 +74,7 @@ export class UserService {
         return false
     }
 
-    static changeOrderStatus(state: 'watched' | 'reviewed', id: number) {
+    static changeOrderStatus(state: 'watched' | 'reviewed', id: number, title : string) {
         const active = this.getActiveUser()
         if (active) {
             const arr = this.retrieveUsers()
@@ -93,7 +93,7 @@ export class UserService {
         return false
     }
 
-/*
+
     static changeRating(r: boolean, id: number) {
         const active = this.getActiveUser()
         if (active) {
@@ -101,8 +101,13 @@ export class UserService {
             for (let user of arr) {
                 if (user.email == active.email) {
                     for (let order of user.orders) {
-                        if (order.id == id && order.status == 'paid') {
-                            order.rating = r
+                        if (order.id == id) {
+                            if(order.rating == r){
+                                order.rating = null
+                            }
+                            else{
+                                order.rating = r
+                            }
                         }
                     }
                     localStorage.setItem('users', JSON.stringify(arr))
@@ -112,7 +117,7 @@ export class UserService {
         }
         return false
     }
-*/
+
     static changePassword(newPassword: string): boolean {
 
         const arr = this.retrieveUsers()

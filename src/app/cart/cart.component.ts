@@ -26,7 +26,7 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './cart.component.css'
 })
 export class CartComponent {
-  public displayedColumns: string[] = ['id', 'title', 'runTime', 'scheduledAt', 'price','actions'];
+  public displayedColumns: string[] = ['title', 'runTime', 'scheduledAt', 'price','actions'];
   public activeUser: UserModel | null = null
   public cart: OrderModel[] | null = null
 
@@ -41,7 +41,7 @@ export class CartComponent {
   }
 
   public doPay(order: OrderModel) {
-    if (UserService.changeOrderStatus('watched', order.id)) {
+    if (UserService.changeOrderStatus('watched', order.id, order.title)) {
       this.activeUser = UserService.getActiveUser()
       this.cart = this.activeUser?.orders.filter(order => order.status === "booked") || [];
       alert('Karta za ' + order.title + ' je uspesno kupljena');

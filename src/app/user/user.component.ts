@@ -29,8 +29,9 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './user.component.css'
 })
 export class UserComponent {
-  public displayedColumns: string[] = ['id', 'destination', 'flightNumber', 'airline', 'count', 'price', 'total', 'status', 'actions'];
+  public displayedColumns: string[] = ['title', 'runTime', 'scheduledAt', 'price','rating','actions'];
   public user: UserModel | null = null
+  public watchedMovies: OrderModel[] | null = null
 
   public oldPasswordValue = ''
   public newPasswordValue = ''
@@ -43,6 +44,7 @@ export class UserComponent {
     }
 
     this.user = UserService.getActiveUser()
+    this.watchedMovies = this.user?.orders.filter(order => order.status === "watched") || [];
   }
 
   public doChangePassword() {
@@ -71,23 +73,11 @@ export class UserComponent {
     this.repeatPasswordValue = ''
   }
 
-/*
-  public doPay(order: OrderModel) {
-    if (UserService.changeOrderStatus('paid', order.id)) {
-      this.user = UserService.getActiveUser()
-    }
-  }
-
-  public doCancel(order: OrderModel) {
-    if (UserService.changeOrderStatus('canceled', order.id)) {
-      this.user = UserService.getActiveUser()
-    }
-  }
-
   public doRating(order: OrderModel, r: boolean) {
     if (UserService.changeRating(r, order.id)) {
       this.user = UserService.getActiveUser()
+      this.watchedMovies = this.user?.orders.filter(order => order.status === "watched") || [];
     }
   }
-*/
+
 }
