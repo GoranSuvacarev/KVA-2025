@@ -1,22 +1,63 @@
-.flight-card {
-    min-width: 49%;
+.example-card {
+    
+    max-width: 400px; /* Povećana širina */
+    width: 90%; /* Prilagodljivo */
+    margin: 50px auto; /* Centriranje */
+    position: relative;
+    padding: 20px;
+    background: rgba(30, 30, 30, 0.85);
+    color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.7);
 }
 
-.flight-content {
-    display: flex;
-    gap: 10px;
-    justify-content: flex-end; /* Align to the right */
-    flex-direction: row;
-    margin-bottom: 30px;
-    flex-wrap: wrap;
-}
-
-.flight-content img {
-    max-width: 620px;
-}
-
-.flight-map {
-    width: auto;
+.blur-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
     height: 100%;
+    background-size: cover;
+    background-position: center;
+    filter: blur(10px);
+    opacity: 0.5;
+    z-index: -1;
 }
 
+mat-card-header h2 {
+    font-size: 24px;
+    text-align: center;
+}
+
+mat-card-content {
+    text-align: left;
+}
+
+.genres, .actors {
+    margin-bottom: 10px;
+}
+
+p {
+    margin: 5px 0;
+}
+
+mat-card-actions {
+    display: flex;
+    justify-content: space-between;
+}
+
+.genres{
+    padding-top: 10px;
+}
+
+.naslov{
+    text-transform: uppercase;
+    font-size: 30px !important;
+   
+}
+
+strong{
+    font-size: 15px;
+}

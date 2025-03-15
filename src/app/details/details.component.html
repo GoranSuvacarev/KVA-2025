@@ -1,55 +1,33 @@
-<div class="wrapper" *ngIf="movie">
-    <h1>{{movie.title}}</h1>
-    <div class="movie-content">
-        <img [src]="movie.poster" [alt]="movie.title">
-        <mat-card class="movie-card" appearance="outlined">
-            <mat-card-content>
-                <h2>movie Details</h2>
-                <mat-list role="list">
-                    <mat-list-item>
-                        <span matListItemTitle>Scheduled At:</span>
-                        <span matListItemLine>{{movie.director.name}}</span>
-                         <span matListItemIcon>
-                            <i class="fa-solid fa-clock-rotate-left"></i>
-                         </span>
-                    </mat-list-item>
-                    <mat-list-item>
-                        <span matListItemTitle>movie Number:</span>
-                        <span matListItemLine>{{movie.movieId}}</span>
-                        <span matListItemIcon>
-                            <i class="fa-solid fa-plane-circle-exclamation"></i>
-                        </span>
-                    </mat-list-item>
-                    <mat-list-item>
-                        <span matListItemTitle>Airplane Model:</span>
-                        <span matListItemLine>{{movie.runTime}}</span>
-                        <span matListItemIcon>
-                            <i class="fa-solid fa-font-awesome"></i>
-                        </span>
-                    </mat-list-item>
-                    <mat-list-item>
-                        <span matListItemTitle>movie Type:</span>
-                        <span matListItemLine>{{movie.description}}</span>
-                        <span matListItemIcon>
-                            <i class="fa-solid fa-circle-exclamation"></i>
-                        </span>
-                    </mat-list-item>
-                </mat-list>
-            </mat-card-content>
-            <mat-card-actions>
-                <a mat-button [routerLink]="['/details/'+movie.movieId+'/order']">
-                    <i class="fa-solid fa-cart-shopping"></i> Book Now
-                </a>
-            </mat-card-actions>
-        </mat-card>
-    </div>
-    <div class="movie-content">
-        <!-- 
-            <mat-card class="movie-map">
-            <iframe [src]="generateMapLink() | safe" width="860" height="600"></iframe>
-            </mat-card>
-        -->
-    </div>
-</div>
 
-<app-loading *ngIf="!movie" />
+<mat-card class="example-card" appearance="outlined">
+    <div class="blur-bg" [style.background-image]="'url(' + movie?.poster + ')'"></div>
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <h2 class="naslov"><i class="fa-solid fa-masks-theater"></i> {{movie?.title}}</h2>
+    </mat-card-header>
+    <img [src]="movie?.poster" [alt]="movie?.title">
+    <mat-card-content>
+       
+    <div class="genres" *ngIf="movie?.movieGenres?.length">
+            <strong> Žanr : </strong>
+            <span *ngFor="let genre of movie?.movieGenres; let i = index">
+                {{ genre?.genre?.name }}<span *ngIf="i < (movie?.movieGenres?.length || 0) - 1">, </span>
+            </span>
+    </div>
+    <p> </p>
+    <div class="actors" *ngIf="movie?.movieActors?.length">
+        <strong>Glumci: </strong>
+        <span *ngFor="let actor of movie?.movieActors; let i = index">
+            {{ actor?.actor?.name }}<span *ngIf="i < (movie?.movieActors?.length || 0) - 1">, </span>
+        </span>
+    </div>
+    <p><strong>Početak prikazivanja : </strong> {{ movie?.startDate }}</p>
+    <p><strong>Trajanje : </strong> {{ movie?.runTime }}</p>
+    <p><strong>Režiser : </strong> {{ movie?.director?.name }}</p>
+    <p><strong>Početak prikazivanja:</strong> {{ movie?.shortDescription }}</p>
+
+    
+    </mat-card-content>
+   
+  </mat-card>
+  

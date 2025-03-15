@@ -9,9 +9,10 @@ import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
 import { NgStyle } from '@angular/common';
+import { NgFor } from '@angular/common';
 @Component({
   selector: 'app-details',
-  imports: [NgIf, LoadingComponent, MatCardModule, MatListModule, MatButtonModule, RouterLink,NgStyle],
+  imports: [NgIf, LoadingComponent, MatCardModule, MatListModule, MatButtonModule, RouterLink,NgStyle,NgFor],
   templateUrl: './details.component.html',
   styleUrl: './details.component.css'
 })
