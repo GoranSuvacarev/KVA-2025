@@ -12,6 +12,10 @@
   <img mat-card-image src="/poster.jpg" class="poster_image">
 </div>
 
+<div class="filter">
+  Filters will go here
+</div>
+
 <div *ngIf="movies" class="movies">
   <mat-card class="movie" appearance="outlined" *ngFor="let movie of movies">
     <img mat-card-image [src]="movie.poster" [alt]="movie.title">
