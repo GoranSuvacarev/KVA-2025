@@ -43,7 +43,8 @@ export class UserComponent {
     }
 
     this.user = UserService.getActiveUser()
-    this.watchedMovies = this.user?.tickets.filter(ticket => ticket.status === "watched") || [];
+    this.watchedMovies = this.user?.tickets.filter(ticket => ticket.status === "watched") || []
+    
   }
 
   public doChangePassword() {
@@ -78,5 +79,4 @@ export class UserComponent {
       this.watchedMovies = this.user?.tickets.filter(ticket => ticket.status === "watched") || [];
     }
   }
-
 }

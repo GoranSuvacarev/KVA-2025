@@ -29,6 +29,7 @@ export class CartComponent {
   public displayedColumns: string[] = ['title', 'runTime', 'scheduledAt', 'price','actions'];
   public activeUser: UserModel | null = null
   public cart: TicketModel[] | null = null
+  
 
   constructor(private router: Router) {
     if (!UserService.getActiveUser()) {
@@ -41,6 +42,14 @@ export class CartComponent {
   }
 
   public doPay(ticket: TicketModel) {
+    
+    for (let movie of this.activeUser!.tickets.filter(ticket => ticket.status === "watched")) {
+      if(ticket.title == movie.title){
+        this.doCancel(ticket)
+        return
+      }
+    }
+      
     if (UserService.changeTicketStatus('watched', ticket.id, ticket.title)) {
       this.activeUser = UserService.getActiveUser()
       this.cart = this.activeUser?.tickets.filter(ticket => ticket.status === "booked") || [];

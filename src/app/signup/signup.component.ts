@@ -65,6 +65,12 @@ export class SignupComponent {
       tickets: []
     })
 
-    result ? this.router.navigate(['/login']) : alert('Email is already taken')
+    if (result) {
+      alert('Successfully registered!');
+      this.router.navigate(['/login']);
+    } else {
+      alert('Email is already taken');
+    }
+    
   }
 }
