@@ -1,3 +1,12 @@
+<div *ngIf="error" class="container">
+  <mat-card class="loading" appearance="outlined" color="red">
+    <mat-card-content>
+      <h1>Oops, an error occured!</h1>
+      <p style="color: red;">{{error}}</p>
+    </mat-card-content>
+  </mat-card>
+</div>
+
 <div class="wrapper" *ngIf="movie">
     <h1>{{movie.title}}</h1>
     <div class="movie-content">
@@ -43,13 +52,4 @@
             </mat-card-actions>
         </mat-card>
     </div>
-    <div class="movie-content">
-        <!-- 
-            <mat-card class="movie-map">
-            <iframe [src]="generateMapLink() | safe" width="860" height="600"></iframe>
-            </mat-card>
-        -->
-    </div>
 </div>
-
-<app-loading *ngIf="!movie" />

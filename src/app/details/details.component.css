@@ -1,8 +1,8 @@
-.flight-card {
+.movie-card {
     min-width: 49%;
 }
 
-.flight-content {
+.movie-content {
     display: flex;
     gap: 10px;
     justify-content: center;
@@ -11,11 +11,11 @@
     flex-wrap: wrap;
 }
 
-.flight-content img {
+.movie-content img {
     max-width: 620px;
 }
 
-.flight-map {
+.movie-map {
     width: auto;
     height: 100%;
 }

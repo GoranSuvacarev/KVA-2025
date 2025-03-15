@@ -18,6 +18,6 @@ export class AppComponent {
 
   public doLogout() {
     localStorage.removeItem('active')
-    this.router.navigate(['/login'])
+    this.router.navigate(['/'])
   }
 }

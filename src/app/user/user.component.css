@@ -1,3 +1,9 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  min-height: 87vh;
+}
+
 .user-card {
     margin-left: auto;
     margin-right: auto;

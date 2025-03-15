@@ -1,8 +1,41 @@
 .spacer {
-    flex: 1 1 auto;
+  flex: 1 1 auto;
 }
 
-mat-toolbar {
-    display: flex;
-    justify-content: space-between;
+mat-toolbar span {
+  font-size: 1.5rem;
+}
+
+mat-toolbar a {
+  font-size: 1.5rem;
+}
+
+mat-toolbar button {
+  font-size: 1.2rem;
+}
+
+mat-toolbar i {
+  margin-right: 8px;
+  font-size: 1.4rem;
+}
+
+.logo {
+  width: 100px;
+  height: 70px;
+  margin-left: 5px;
+  vertical-align: middle;
+}
+
+.footer {
+  color: #fff;
+  padding: 20px;
+  width: 100%;
+  position: relative;
+  bottom: 0;
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }

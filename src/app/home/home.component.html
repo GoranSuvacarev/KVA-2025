@@ -1,32 +1,29 @@
 <div *ngIf="error" class="container">
     <mat-card class="loading" appearance="outlined" color="red">
         <mat-card-content>
-            <h1>Oops, an error occured!</h1>
+            <h1>Oops, an error occurred!</h1>
             <p style="color: red;">{{error}}</p>
         </mat-card-content>
     </mat-card>
 </div>
+<app-loading *ngIf="!movies && !error" />
 
-<div *ngIf="movies" class="container">
-    <mat-card class="example-card" appearance="outlined" *ngFor="let movie of movies">
-        <img mat-card-image [src]="movie.poster" [alt]="movie.title">
-        <mat-card-content>
-            <h1>{{movie.title}}</h1>
-            <p>Scheduled at: {{movie.startDate}}</p>
-            <p>movie number: {{movie.runTime}}</p>
-            <p>Plane model: {{movie.shortDescription}}</p>
-            <p><strong>Genres:</strong>
-                <span *ngFor="let movieGenre of movie.movieGenres">
-                    {{ movieGenre.genre.name}}
-                </span>
-            </p>
-        </mat-card-content>
-        <mat-card-actions>
-            <a mat-button [routerLink]="['/details/', movie.movieId]">
-                <i class="fa-solid fa-arrow-up-right-from-square"></i> Details
-            </a>
-        </mat-card-actions>
-    </mat-card>
+<div class="poster">
+  <img mat-card-image src="/poster.jpg" class="poster_image">
 </div>
 
-<app-loading *ngIf="!movies && !error" />
+<div class="filter">
+  Filters will go here
+</div>
+
+<div *ngIf="movies" class="movies">
+  <mat-card class="movie" appearance="outlined" *ngFor="let movie of movies">
+    <img mat-card-image [src]="movie.poster" [alt]="movie.title">
+    <mat-card-content>
+      <h1 class="naslov">{{movie.title}}</h1>
+      <div class="movie-details">
+        <p><strong>Scheduled at:</strong> {{formatDate(movie.startDate)}}</p>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

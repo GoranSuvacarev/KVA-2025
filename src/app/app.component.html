@@ -1,20 +1,27 @@
-<mat-toolbar color="primary">
+<mat-toolbar color="primary" class="header">
     <a routerLink="/" mat-button>
-        <i class="fa-solid fa-clapperboard"></i> Cinema
+    <span><i class="fa-solid fa-film"></i> Eclipse Cinemas</span>
     </a>
+
     <span class="spacer"></span>
+
     <a routerLink="/login" mat-button *ngIf="!service.getActiveUser()">
         <i class="fa-solid fa-right-to-bracket"></i> Login
     </a>
+
     <a routerLink="/user" mat-button *ngIf="service.getActiveUser()">
         <i class="fa-solid fa-user"></i> Profile
     </a>
-    <a routerLink="/cart" mat-button *ngIf="service.getActiveUser()">
-        <i class="fa-solid fa-cart-shopping"></i> Cart
-    </a>
+
     <button mat-button *ngIf="service.getActiveUser()" (click)="doLogout()">
         <i class="fa-solid fa-right-from-bracket"></i> Logout
     </button>
 </mat-toolbar>
 
 <router-outlet />
+
+<mat-toolbar color="primary" class="footer">
+  <span>© 2025 Eclipse Cinemas</span>
+  <span class="spacer"></span>
+  <a mat-button href="#">Terms of Service</a>
+</mat-toolbar>
