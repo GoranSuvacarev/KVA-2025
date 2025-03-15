@@ -6,7 +6,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { UserModel } from '../../models/user.model';
 import { MatTableModule } from '@angular/material/table';
-import { OrderModel } from '../../models/order.model';
+import { TicketModel } from '../../models/ticket.model';
 import { MatAccordion, MatExpansionModule } from '@angular/material/expansion';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -30,7 +30,7 @@ import { FormsModule } from '@angular/forms';
 export class UserComponent {
   public displayedColumns: string[] = ['title', 'runTime', 'scheduledAt', 'price','rating','actions'];
   public user: UserModel | null = null
-  public watchedMovies: OrderModel[] | null = null
+  public watchedMovies: TicketModel[] | null = null
 
   public oldPasswordValue = ''
   public newPasswordValue = ''
@@ -43,7 +43,7 @@ export class UserComponent {
     }
 
     this.user = UserService.getActiveUser()
-    this.watchedMovies = this.user?.orders.filter(order => order.status === "watched") || [];
+    this.watchedMovies = this.user?.tickets.filter(ticket => ticket.status === "watched") || [];
   }
 
   public doChangePassword() {
@@ -72,10 +72,10 @@ export class UserComponent {
     this.repeatPasswordValue = ''
   }
 
-  public doRating(order: OrderModel, r: boolean) {
-    if (UserService.changeRating(r, order.id)) {
+  public doRating(ticket: TicketModel, r: boolean) {
+    if (UserService.changeRating(r, ticket.id)) {
       this.user = UserService.getActiveUser()
-      this.watchedMovies = this.user?.orders.filter(order => order.status === "watched") || [];
+      this.watchedMovies = this.user?.tickets.filter(ticket => ticket.status === "watched") || [];
     }
   }
 

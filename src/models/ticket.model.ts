@@ -1,4 +1,4 @@
-export interface OrderModel {
+export interface TicketModel {
     id : number
     title: string
     runTime: number

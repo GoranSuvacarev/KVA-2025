@@ -1,11 +1,12 @@
 <div *ngIf="error" class="container">
-  <mat-card class="loading" appearance="outlined" color="red">
-    <mat-card-content>
-      <h1>Oops, an error occured!</h1>
-      <p style="color: red;">{{error}}</p>
-    </mat-card-content>
-  </mat-card>
+    <mat-card class="loading" appearance="outlined" color="red">
+        <mat-card-content>
+            <h1 style="color: red;">Doslo je do greske!</h1>
+        </mat-card-content>
+    </mat-card>
 </div>
+
+<app-loading *ngIf="!movie && !error" />
 
 <div class="wrapper" *ngIf="movie">
     <h1>{{movie.title}}</h1>
@@ -46,7 +47,7 @@
                 </mat-list>
             </mat-card-content>
             <mat-card-actions>
-                <a mat-button (click)="doOrder()">
+                <a mat-button (click)="bookTicket()">
                     <i class="fa-solid fa-cart-shopping"></i> Book Now
                 </a>
             </mat-card-actions>

@@ -9,6 +9,7 @@ import { MovieService } from '../../services/movie.service';
 import { MatSelectModule } from '@angular/material/select';
 import { NgFor } from '@angular/common';
 import { UserService } from '../../services/user.service';
+import { GenreModel } from '../../models/genre.model';
 
 @Component({
   selector: 'app-signup',
@@ -18,7 +19,8 @@ import { UserService } from '../../services/user.service';
 })
 export class SignupComponent {
 
-  public destinationList: string[] = []
+  public genres: GenreModel[] = []
+  public genreNames : string[] = []
   public email = ''
   public password = ''
   public repeatPassword = ''
@@ -26,11 +28,19 @@ export class SignupComponent {
   public lastName = ''
   public phone = ''
   public address = ''
-  public destination = ''
+  public genre = ''
 
   public constructor(private router: Router) {
-    MovieService.getDestinations()
-      .then(rsp => this.destinationList = rsp.data)
+    MovieService.getGenres()
+      .then(rsp => {
+        this.genres = rsp.data;
+
+        for (let genre of this.genres) {
+          let name = genre.name;
+          this.genreNames.push(name);
+        }
+    })
+
   }
 
   public doSignup() {
@@ -51,8 +61,8 @@ export class SignupComponent {
       lastName: this.lastName,
       phone: this.phone,
       address: this.address,
-      favouriteDestination: this.destination,
-      orders: []
+      favoriteGenre: this.genre,
+      tickets: []
     })
 
     result ? this.router.navigate(['/login']) : alert('Email is already taken')

@@ -16,10 +16,6 @@ export class MovieService {
         return client.request({
             url: '/movie',
             method: 'GET',
-            params: {
-                'sort': 'scheduledAt,asc',
-                'type': 'departure'
-            }
         })
     }
 
@@ -27,17 +23,7 @@ export class MovieService {
         return client.get(`/movie/${id}`)
     }
 
-    static async getFlightList() {
-        return client.request({
-            url: '/flight/list',
-            method: 'GET',
-            params: {
-                'type': 'departure'
-            }
-        })
-    }
-
-    static async getDestinations() {
-        return client.get('/flight/destination')
+    static async getGenres() {
+        return client.get('/genre')
     }
 }

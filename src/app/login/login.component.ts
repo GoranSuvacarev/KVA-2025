@@ -27,7 +27,6 @@ export class LoginComponent {
 
   public doLogin() {
     if (UserService.login(this.email, this.password)) {
-      // Redirect to user to profile
       this.router.navigate(['/'])
       return
     }

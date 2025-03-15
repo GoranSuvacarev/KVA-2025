@@ -1,4 +1,4 @@
-import { OrderModel } from "../models/order.model"
+import { TicketModel } from "../models/ticket.model"
 import { UserModel } from "../models/user.model"
 
 export class UserService {
@@ -12,9 +12,9 @@ export class UserService {
                     lastName: 'User',
                     phone: '+3816123456789',
                     address: 'Mokroluska 14, Vozdovac',
-                    favouriteDestination: 'Banja Luka',
+                    favoriteGenre: 'Fantazija',
                     password: 'user123',
-                    orders: []
+                    tickets: []
                 }
             ]
 
@@ -61,11 +61,11 @@ export class UserService {
         return null
     }
 
-    static createOrder(order: OrderModel) {
+    static createTicket(ticket: TicketModel) {
         const arr = this.retrieveUsers()
         for (let user of arr) {
             if (user.email == localStorage.getItem('active')) {
-                user.orders.push(order)
+                user.tickets.push(ticket)
                 localStorage.setItem('users', JSON.stringify(arr))
                 return true
             }
@@ -74,15 +74,15 @@ export class UserService {
         return false
     }
 
-    static changeOrderStatus(state: 'watched' | 'reviewed', id: number, title : string) {
+    static changeTicketStatus(state: 'watched' | 'reviewed', id: number, title : string) {
         const active = this.getActiveUser()
         if (active) {
             const arr = this.retrieveUsers()
             for (let user of arr) {
                 if (user.email == active.email) {
-                    for (let order of user.orders) {
-                        if (order.id == id) {
-                            order.status = state
+                    for (let ticket of user.tickets) {
+                        if (ticket.id == id) {
+                            ticket.status = state
                         }
                     }
                     localStorage.setItem('users', JSON.stringify(arr))
@@ -100,13 +100,13 @@ export class UserService {
             const arr = this.retrieveUsers()
             for (let user of arr) {
                 if (user.email == active.email) {
-                    for (let order of user.orders) {
-                        if (order.id == id) {
-                            if(order.rating == r){
-                                order.rating = null
+                    for (let ticket of user.tickets) {
+                        if (ticket.id == id) {
+                            if(ticket.rating == r){
+                                ticket.rating = null
                             }
                             else{
-                                order.rating = r
+                                ticket.rating = r
                             }
                         }
                     }

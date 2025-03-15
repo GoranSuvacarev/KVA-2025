@@ -22,19 +22,9 @@ export class HomeComponent {
   public movies: MovieModel[] | null = null
   public error: string | null = null
 
-  constructor(public utils: UtilsService) {
+  constructor(public utils : UtilsService) {
     MovieService.getMovies()
       .then(rsp => this.movies = rsp.data.slice(0,16))
       .catch((e: AxiosError) => this.error = `${e.code}: ${e.message}`)
-  }
-
-  formatDate(date: string): string {
-    const options: Intl.DateTimeFormatOptions = {
-      day: '2-digit',
-      month: '2-digit',
-      year: 'numeric'
-    };
-    const formattedDate = new Date(date).toLocaleDateString('sr-RS', options);
-    return formattedDate ;
   }
 }

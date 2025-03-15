@@ -1,4 +1,4 @@
-import { OrderModel } from "./order.model"
+import { TicketModel } from "./ticket.model"
 
 export interface UserModel {
     email: string
@@ -6,7 +6,7 @@ export interface UserModel {
     lastName: string
     phone: string
     address: string
-    favouriteDestination: string
+    favoriteGenre: string
     password: string
-    orders: OrderModel[]
+    tickets: TicketModel[]
 }

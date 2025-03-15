@@ -6,10 +6,11 @@
         </mat-card-content>
     </mat-card>
 </div>
+
 <app-loading *ngIf="!movies && !error" />
 
 <div class="poster">
-  <img mat-card-image src="/poster.jpg" class="poster_image">
+  <img  mat-card-image src="/poster.jpg" class="poster_image">
 </div>
 
 <div class="filter">
@@ -22,7 +23,7 @@
     <mat-card-content>
       <h1 class="naslov">{{movie.title}}</h1>
       <div class="movie-details">
-        <p><strong>Scheduled at:</strong> {{formatDate(movie.startDate)}}</p>
+        <p><strong>Scheduled at:</strong> {{utils.formatDate(movie.startDate)}}</p>
       </div>
     </mat-card-content>
   </mat-card>

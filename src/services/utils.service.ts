@@ -7,11 +7,14 @@ export class UtilsService {
 
   constructor() { }
 
-  public formatDate(iso: string) {
-    return new Date(iso).toLocaleString('sr-RS')
+  public formatDate(date: string): string {
+    const options: Intl.DateTimeFormatOptions = {
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric'
+    };
+    const formattedDate = new Date(date).toLocaleDateString('sr-RS', options);
+    return formattedDate ;
   }
 
-  public generateDestinationImage(dest: string) {
-    return `https://img.pequla.com/destination/${dest.split(' ')[0].toLowerCase()}.jpg`
-  }
 }
