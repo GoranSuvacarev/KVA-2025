@@ -1,71 +1,27 @@
-.wrapper {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-    min-height: 100vh; 
-    background-size: cover;
-    background-position: center;
-}
-
-.blur-bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    min-height: 100vh; 
-    background-size: cover;
-    background-position: center;
-    filter: blur(10px);
-    opacity: 0.5;
-    z-index: -1; 
-}
-
 .movie-content {
-    position: relative;
-    z-index: 1; 
-    background: rgba(0, 0, 0, 0.6); 
-    padding: 20px;
-    border-radius: 10px;
-    backdrop-filter: blur(5px);
-}
-
-.movie-card {
-    width: 30%;
-}
-
-.movie-content {
-    display: flex;
-    gap: 10px;
-    justify-content: center;
-    flex-direction: row;
-    margin-bottom: 30px;
-    flex-wrap: wrap;
-}
-
-.movie-content img {
-    max-width: 620px;
-}
-
-.movie-map {
-    width: auto;
-    height: 100%;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+  padding: 40px;
+  border-radius: 10px;
+  backdrop-filter: blur(5px);
 }
 
 .opis {
-    word-wrap: break-word;  
-    white-space: normal;    
-    overflow-wrap: break-word; 
+    word-wrap: break-word;
+    white-space: normal;
+    overflow-wrap: break-word;
     max-height: 100%;
 }
 
 h2 {
-    text-transform: uppercase;
+  text-transform: uppercase;
+  margin-left: 15px;
 }
-
-
 
 .bold-text {
     font-weight: bold;
@@ -74,7 +30,6 @@ h2 {
 
 
 
-  
-  
-  
-  
+
+
+
