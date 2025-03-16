@@ -29,6 +29,7 @@ export class CartComponent {
   public displayedColumns: string[] = ['title', 'runTime', 'scheduledAt', 'price','actions'];
   public activeUser: UserModel | null = null
   public cart: TicketModel[] | null = null
+  public totalPrice : number = 0
   
 
   constructor(private router: Router) {
@@ -37,8 +38,7 @@ export class CartComponent {
       return
     }
 
-    this.activeUser = UserService.getActiveUser()
-    this.cart = this.activeUser?.tickets.filter(ticket => ticket.status === "booked") || [];
+    this.loadCart()
   }
 
   public doPay(ticket: TicketModel) {
@@ -51,8 +51,7 @@ export class CartComponent {
     }
       
     if (UserService.changeTicketStatus('watched', ticket.id, ticket.title)) {
-      this.activeUser = UserService.getActiveUser()
-      this.cart = this.activeUser?.tickets.filter(ticket => ticket.status === "booked") || [];
+      this.loadCart()
       alert('Karta za ' + ticket.title + ' je uspesno kupljena');
     }
   }
@@ -66,9 +65,18 @@ export class CartComponent {
         }
       }
 
-      this.activeUser = UserService.getActiveUser()
-      this.cart = this.activeUser?.tickets.filter(ticket => ticket.status === "booked") || [];
+      this.loadCart()
+
       alert('Rezervacija za ' + ticket.title + ' je otkazana')
     
+  }
+
+  public loadCart(){
+    this.activeUser = UserService.getActiveUser()
+    this.cart = this.activeUser?.tickets.filter(ticket => ticket.status === "booked") || [];
+    this.totalPrice = 0
+    for(let ticket of this.cart!){
+      this.totalPrice += ticket.price
+    }
   }
 }

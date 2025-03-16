@@ -42,9 +42,7 @@ export class UserComponent {
       return
     }
 
-    this.user = UserService.getActiveUser()
-    this.watchedMovies = this.user?.tickets.filter(ticket => ticket.status === "watched") || []
-    
+    this.loadWatchedMovies()
   }
 
   public doChangePassword() {
@@ -75,8 +73,12 @@ export class UserComponent {
 
   public doRating(ticket: TicketModel, r: boolean) {
     if (UserService.changeRating(r, ticket.id)) {
-      this.user = UserService.getActiveUser()
-      this.watchedMovies = this.user?.tickets.filter(ticket => ticket.status === "watched") || [];
+      this.loadWatchedMovies()
     }
+  }
+
+  public loadWatchedMovies(){
+    this.user = UserService.getActiveUser()
+    this.watchedMovies = this.user?.tickets.filter(ticket => ticket.status === "watched") || [];
   }
 }
