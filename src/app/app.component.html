@@ -9,13 +9,13 @@
     <i class="fa-solid fa-right-to-bracket"></i> Login
   </a>
 
+  <a routerLink="/cart" mat-button *ngIf="service.getActiveUser()">
+    <i class="fa-solid fa-cart-shopping"></i> Cart
+  </a>
+
   <a routerLink="/user" mat-button *ngIf="service.getActiveUser()">
     <i class="fa-solid fa-user"></i> Profile
   </a>
-
-  <button mat-button *ngIf="service.getActiveUser()" (click)="doLogout()">
-    <i class="fa-solid fa-right-from-bracket"></i> Logout
-  </button>
 
   <button mat-button *ngIf="service.getActiveUser()" (click)="doLogout()">
     <i class="fa-solid fa-right-from-bracket"></i> Logout
