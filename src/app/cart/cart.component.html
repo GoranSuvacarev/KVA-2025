@@ -8,6 +8,7 @@
     <div *ngIf="cart!.length > 0">
         <div>
             <h1>Cart</h1>
+            <h3>Ukupna cena karata: {{totalPrice}}</h3>
             <table mat-table [dataSource]="cart!" class="mat-elevation-z8">
                 <ng-container matColumnDef="title">
                     <th mat-header-cell *matHeaderCellDef>
