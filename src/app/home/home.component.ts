@@ -24,7 +24,7 @@ export class HomeComponent {
   public movies: MovieModel[] | null = null;
   public error: string | null = null;
   public genres: GenreModel[] = []
-  public genreNames : string[] = ["--"]
+  public genreNames : string[] = ["Prikaži sve"]
   public genre = ''
 
   constructor(public utils: UtilsService, private router: Router) {
