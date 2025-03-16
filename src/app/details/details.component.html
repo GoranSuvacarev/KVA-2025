@@ -17,40 +17,41 @@
                 <h2>Movie Details</h2>
                 <mat-list role="list">
                     <mat-list-item>
-                        <span matListItemTitle>Žanr:</span>
+                        <span matListItemTitle class="bold-text">Žanr:</span>
                         <span *ngFor="let genre of movie?.movieGenres; let i = index">
                             {{ genre?.genre?.name }}<span *ngIf="i < (movie?.movieGenres?.length || 0) - 1">, </span>
                         </span>
                     </mat-list-item>
                     
                     <mat-list-item>
-                        <span matListItemTitle>Glumci:</span>      
+                        <span matListItemTitle><strong>Glumci:</strong></span>      
                         <span *ngFor="let actor of movie?.movieActors; let i = index">
                              {{ actor?.actor?.name }}<span *ngIf="i < (movie?.movieActors?.length || 0) - 1">, </span>
                         </span>
                     </mat-list-item>
                     
                     <mat-list-item>
-                        <span matListItemTitle>Trajanje :</span>
+                        <span matListItemTitle><strong>Trajanje :</strong></span>
                         <span matListItemLine>{{movie.runTime}}min</span>
                     </mat-list-item>
                     
                     <mat-list-item>
-                        <span matListItemTitle>Početak prikazivanja :</span>
+                        <span matListItemTitle><strong>Početak prikazivanja :</strong></span>
                         <span matListItemLine>{{movie.startDate}}</span>
                     </mat-list-item>
                     
                     <mat-list-item>
-                        <span matListItemTitle>Režiser :</span>
+                        <span matListItemTitle><strong>Režiser :</strong></span>
                         <span matListItemLine>{{movie?.director?.name}}</span>
                     </mat-list-item> 
 
                     <mat-list-item>
-                        <span matListItemTitle>Kratak opis :</span>
-                        <span matListItemLine>{{movie.description}}</span>
+                        <span matListItemTitle><strong>Kratak opis :</strong></span>
+                        <span matListItemLine class="opis">{{movie.description}}</span>
                     </mat-list-item>
                 </mat-list>
             </mat-card-content>
+            
             <mat-card-actions>
                 <a mat-button (click)="bookTicket()">
                     <i class="fa-solid fa-cart-shopping"></i> Book Now
