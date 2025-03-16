@@ -18,7 +18,7 @@
 </div>
 
 <div *ngIf="movies" class="movies">
-  <mat-card class="movie" appearance="outlined" *ngFor="let movie of movies">
+  <mat-card class="movie" appearance="outlined" *ngFor="let movie of movies" (click)="goToDetails(movie.movieId)">
     <img mat-card-image [src]="movie.poster" [alt]="movie.title">
     <mat-card-content>
       <h1 class="naslov">{{movie.title}}</h1>

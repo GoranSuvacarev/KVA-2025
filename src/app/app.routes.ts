@@ -5,6 +5,7 @@ import { LoginComponent } from './login/login.component';
 import { UserComponent } from './user/user.component';
 import { SignupComponent } from './signup/signup.component';
 import { CartComponent } from './cart/cart.component';
+import { RouterModule } from '@angular/router';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },
