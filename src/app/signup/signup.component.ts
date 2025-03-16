@@ -40,7 +40,6 @@ export class SignupComponent {
           this.genreNames.push(name);
         }
     })
-
   }
 
   public doSignup() {
@@ -71,6 +70,6 @@ export class SignupComponent {
     } else {
       alert('Email is already taken');
     }
-    
+
   }
 }

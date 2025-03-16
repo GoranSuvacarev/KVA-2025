@@ -14,7 +14,23 @@
 </div>
 
 <div class="filter">
-  Filters will go here
+  <form class="search_form">
+    <mat-form-field class="search_input">
+      <mat-label><i class="fa-solid fa-magnifying-glass"></i> Pretraga</mat-label>
+      <input matInput placeholder="Unesite naziv filma...">
+    </mat-form-field>
+  </form>
+
+  <form class="genre_form">
+    <mat-form-field class="full-width">
+      <mat-label>Žanrovi</mat-label>
+      <mat-select [(ngModel)]="genre">
+        <mat-option *ngFor="let genre of genreNames" [value]="genre">
+          {{genre}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
 </div>
 
 <div *ngIf="movies" class="movies">
