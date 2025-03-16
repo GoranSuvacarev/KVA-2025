@@ -74,7 +74,7 @@ export class UserService {
         return false
     }
 
-    static changeTicketStatus(state: 'watched' | 'reviewed', id: number, title : string) {
+    static changeTicketStatus(state: 'watched' , id: number, title : string) {
         const active = this.getActiveUser()
         if (active) {
             const arr = this.retrieveUsers()

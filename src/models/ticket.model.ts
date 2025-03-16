@@ -3,7 +3,7 @@ export interface TicketModel {
     title: string
     runTime: number
     scheduledAt: string
-    price: number
-    status: 'booked' | 'watched' | 'reviewed'
+    price: number 
+    status: 'booked' | 'watched' 
     rating : boolean | null
 }
