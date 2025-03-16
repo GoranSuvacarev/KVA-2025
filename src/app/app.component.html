@@ -1,21 +1,25 @@
 <mat-toolbar color="primary" class="header">
-    <a routerLink="/" mat-button>
+  <a routerLink="/" mat-button>
     <span><i class="fa-solid fa-film"></i> Eclipse Cinemas</span>
-    </a>
+  </a>
 
-    <span class="spacer"></span>
+  <span class="spacer"></span>
 
-    <a routerLink="/login" mat-button *ngIf="!service.getActiveUser()">
-        <i class="fa-solid fa-right-to-bracket"></i> Login
-    </a>
+  <a routerLink="/login" mat-button *ngIf="!service.getActiveUser()">
+    <i class="fa-solid fa-right-to-bracket"></i> Login
+  </a>
 
-    <a routerLink="/user" mat-button *ngIf="service.getActiveUser()">
-        <i class="fa-solid fa-user"></i> Profile
-    </a>
+  <a routerLink="/user" mat-button *ngIf="service.getActiveUser()">
+    <i class="fa-solid fa-user"></i> Profile
+  </a>
 
-    <button mat-button *ngIf="service.getActiveUser()" (click)="doLogout()">
-        <i class="fa-solid fa-right-from-bracket"></i> Logout
-    </button>
+  <button mat-button *ngIf="service.getActiveUser()" (click)="doLogout()">
+    <i class="fa-solid fa-right-from-bracket"></i> Logout
+  </button>
+
+  <button mat-button *ngIf="service.getActiveUser()" (click)="doLogout()">
+    <i class="fa-solid fa-right-from-bracket"></i> Logout
+  </button>
 </mat-toolbar>
 
 <router-outlet />
