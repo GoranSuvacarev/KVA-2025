@@ -38,6 +38,17 @@
   cursor: pointer;
 }
 
+mat-card-content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.movie-details {
+  margin-top: auto;
+  font-size: 1.3rem;
+}
+
 .movie:hover {
     transform: scale(1.05);
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
