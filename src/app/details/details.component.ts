@@ -9,10 +9,11 @@ import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
 import { UserService } from '../../services/user.service';
 import { AxiosError } from 'axios';
+import { NgFor } from '@angular/common';
 
 @Component({
   selector: 'app-details',
-  imports: [NgIf, LoadingComponent, MatCardModule, MatListModule, MatButtonModule],
+  imports: [NgIf, LoadingComponent, MatCardModule, MatListModule, MatButtonModule, NgFor],
   templateUrl: './details.component.html',
   styleUrl: './details.component.css'
 })

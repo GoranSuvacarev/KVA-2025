@@ -14,35 +14,40 @@
         <img [src]="movie.poster" [alt]="movie.title">
         <mat-card class="movie-card" appearance="outlined">
             <mat-card-content>
-                <h2>movie Details</h2>
+                <h2>Movie Details</h2>
                 <mat-list role="list">
                     <mat-list-item>
-                        <span matListItemTitle>Scheduled At:</span>
-                        <span matListItemLine>{{movie.director.name}}</span>
-                         <span matListItemIcon>
-                            <i class="fa-solid fa-clock-rotate-left"></i>
-                         </span>
-                    </mat-list-item>
-                    <mat-list-item>
-                        <span matListItemTitle>movie Number:</span>
-                        <span matListItemLine>{{movie.movieId}}</span>
-                        <span matListItemIcon>
-                            <i class="fa-solid fa-plane-circle-exclamation"></i>
+                        <span matListItemTitle>Žanr:</span>
+                        <span *ngFor="let genre of movie?.movieGenres; let i = index">
+                            {{ genre?.genre?.name }}<span *ngIf="i < (movie?.movieGenres?.length || 0) - 1">, </span>
                         </span>
                     </mat-list-item>
+                    
+                    <mat-list-item>
+                        <span matListItemTitle>Glumci:</span>      
+                        <span *ngFor="let actor of movie?.movieActors; let i = index">
+                             {{ actor?.actor?.name }}<span *ngIf="i < (movie?.movieActors?.length || 0) - 1">, </span>
+                        </span>
+                    </mat-list-item>
+                    
                     <mat-list-item>
                         <span matListItemTitle>Trajanje :</span>
-                        <span matListItemLine>{{movie.runTime}}</span>
-                        <span matListItemIcon>
-                            <i class="fa-solid fa-font-awesome"></i>
-                        </span>
+                        <span matListItemLine>{{movie.runTime}}min</span>
                     </mat-list-item>
+                    
+                    <mat-list-item>
+                        <span matListItemTitle>Početak prikazivanja :</span>
+                        <span matListItemLine>{{movie.startDate}}</span>
+                    </mat-list-item>
+                    
+                    <mat-list-item>
+                        <span matListItemTitle>Režiser :</span>
+                        <span matListItemLine>{{movie?.director?.name}}</span>
+                    </mat-list-item> 
+
                     <mat-list-item>
                         <span matListItemTitle>Kratak opis :</span>
                         <span matListItemLine>{{movie.description}}</span>
-                        <span matListItemIcon>
-                            <i class="fa-solid fa-circle-exclamation"></i>
-                        </span>
                     </mat-list-item>
                 </mat-list>
             </mat-card-content>
