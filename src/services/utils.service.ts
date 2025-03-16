@@ -16,5 +16,4 @@ export class UtilsService {
     const formattedDate = new Date(date).toLocaleDateString('sr-RS', options);
     return formattedDate ;
   }
-
 }
