@@ -14,27 +14,49 @@
 </div>
 
 <div class="filter">
-  <form class="search_form">
+  <div class="search_form">
     <mat-form-field class="search_input">
       <mat-label><i class="fa-solid fa-magnifying-glass"></i> Pretraga</mat-label>
-      <input matInput placeholder="Unesite naziv filma...">
+      <input matInput type="text" placeholder="Unesite naziv filma..." (keyup)="doFilter()" [(ngModel)]="userInput" >
     </mat-form-field>
-  </form>
+  </div>
 
-  <form class="genre_form">
+  <div class="genre_form">
     <mat-form-field class="full-width">
       <mat-label>Žanrovi</mat-label>
-      <mat-select [(ngModel)]="genre">
+      <mat-select (selectionChange)="doFilter()" [(ngModel)]="genre">
         <mat-option *ngFor="let genre of genreNames" [value]="genre">
           {{genre}}
         </mat-option>
       </mat-select>
     </mat-form-field>
-  </form>
+  </div>
+
+  <div class="genre_form">
+    <mat-form-field class="full-width">
+      <mat-label>Glumci</mat-label>
+      <mat-select (selectionChange)="doFilter()" [(ngModel)]="selectedActor">
+        <mat-option *ngFor="let selectedActor of actorNames" [value]="selectedActor">
+          {{selectedActor}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div class="genre_form">
+    <mat-form-field class="full-width">
+      <mat-label>Režiseri</mat-label>
+      <mat-select (selectionChange)="doFilter()" [(ngModel)]="selectedDirector">
+        <mat-option *ngFor="let selectedDirector of directorNames" [value]="selectedDirector">
+          {{selectedDirector}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
 </div>
 
 <div *ngIf="movies" class="movies">
-  <mat-card class="movie" appearance="outlined" *ngFor="let movie of movies" (click)="goToDetails(movie.movieId)">
+  <mat-card class="movie" appearance="outlined" *ngFor="let movie of filteredMovies" (click)="goToDetails(movie.movieId)">
     <img mat-card-image [src]="movie.poster" [alt]="movie.title">
     <mat-card-content>
       <h1 class="naslov">{{movie.title}}</h1>
