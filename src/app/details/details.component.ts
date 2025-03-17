@@ -35,13 +35,13 @@ export class DetailsComponent {
     })
   }
 
-  public bookTicket() {
+  public bookTicket(time : string ,price : number) {
     const result = UserService.createTicket({
       id: new Date().getTime(),
       title: this.movie!.title,
       runTime: this.movie!.runTime,
-      scheduledAt: "2025-03-13 10:00",
-      price : 50,
+      scheduledAt: this.utils.formatDate(this.movie!.startDate) + " " + time,
+      price : price,
       status: 'booked',
       rating : null
     })
@@ -69,4 +69,6 @@ export class DetailsComponent {
     return Boolean(this.movie?.description &&
       this.movie.description.length > this.maxDescriptionLength);
   }
+
+  
 }

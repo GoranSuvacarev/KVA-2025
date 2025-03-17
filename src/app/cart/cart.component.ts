@@ -67,9 +67,6 @@ export class CartComponent {
       }
 
       this.loadCart()
-
-      alert('Rezervacija za ' + ticket.title + ' je otkazana')
-    
   }
 
   public loadCart(){

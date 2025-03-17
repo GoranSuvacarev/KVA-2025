@@ -65,7 +65,7 @@
     <h2>Projekcije</h2>
 
     <div class="screening-times">
-      <mat-card class="screening-card" >
+      <mat-card class="screening-card" (click)="bookTicket('15:00', 550)" >
         <mat-card-content class="screening-content">
           <div class="screening-type">2D - SINH</div>
           <div class="screening-time">15:00</div>
@@ -75,7 +75,7 @@
       </mat-card>
 
       <mat-card class="screening-card" >
-        <mat-card-content class="screening-content">
+        <mat-card-content class="screening-content" (click)="bookTicket('19:30', 700)">
           <div class="screening-type">2D - TITL</div>
           <div class="screening-time">19:30</div>
           <div class="screening-hall">Sala 2</div>
@@ -84,7 +84,7 @@
       </mat-card>
 
       <mat-card class="screening-card" >
-        <mat-card-content class="screening-content">
+        <mat-card-content class="screening-content" (click)="bookTicket('21:15', 900)">
           <div class="screening-type">3D - TITL</div>
           <div class="screening-time">21:15</div>
           <div class="screening-hall">Sala 1</div>
