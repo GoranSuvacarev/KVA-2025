@@ -11,7 +11,6 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
-import { NgStyle } from '@angular/common';
 
 @Component({
   selector: 'app-cart',
@@ -23,12 +22,12 @@ import { NgStyle } from '@angular/common';
     MatFormFieldModule,
     MatInputModule,
     FormsModule,
-    NgStyle],
+  ],
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.css'
 })
 export class CartComponent {
-  public displayedColumns: string[] = ['title', 'runTime', 'scheduledAt', 'price','actions'];
+  public displayedColumns: string[] = ['title', 'runTime', 'scheduledAt','actions'];
   public activeUser: UserModel | null = null
   public cart: TicketModel[] | null = null
   public totalPrice : number = 0

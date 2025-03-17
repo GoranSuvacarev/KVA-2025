@@ -33,7 +33,7 @@ import { NgFor } from '@angular/common';
   styleUrl: './user.component.css'
 })
 export class UserComponent {
-  public displayedColumns: string[] = ['title', 'runTime', 'scheduledAt', 'price','rating','actions'];
+  public displayedColumns: string[] = ['title', 'runTime', 'scheduledAt', 'price','rating'];
   public user: UserModel | null = null
   public watchedMovies: TicketModel[] | null = null
 
