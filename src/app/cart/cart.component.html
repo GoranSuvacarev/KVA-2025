@@ -6,7 +6,7 @@
 
     <div *ngIf="cart!.length > 0">
         <div>
-            <h1><i class="fa-solid fa-cart-shopping"></i> CART</h1>
+            <h1><i class="fa-solid fa-cart-shopping"></i> KORPA</h1>
             <table mat-table [dataSource]="cart!" class="mat-elevation-z8">
                 <ng-container matColumnDef="title">
                     <th mat-header-cell *matHeaderCellDef>
@@ -59,9 +59,21 @@
                 <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                 <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
             </table>
-          <h3>Ukupna cena karata: {{totalPrice}} RSD</h3>
         </div>
     </div>
+    
+    <mat-card class="total-price-card">
+        <mat-card-content>
+            <div class="price-container">
+                <i class="fa-solid fa-coins price-icon"></i>
+                <div class="price-info">
+                    <span class="price-label">Ukupna cena</span>
+                    <span class="total-price">{{ totalPrice }} RSD</span>
+                </div>
+            </div>
+        </mat-card-content>
+    </mat-card>
+    
 </div>
 
 
