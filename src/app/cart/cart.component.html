@@ -1,66 +1,65 @@
+<div class="background-image"></div>
 <div class="wrapper">
     <mat-card appearance="outlined" *ngIf="cart!.length == 0" class="no-order">
-        <mat-card-content>
             <h1>Cart is empty!</h1>
-        </mat-card-content>
     </mat-card>
-    
+
     <div *ngIf="cart!.length > 0">
         <div>
             <h1><i class="fa-solid fa-cart-shopping"></i> CART</h1>
-            <h3>UKUPNA CENA KARATA: {{totalPrice}}RSD</h3>
             <table mat-table [dataSource]="cart!" class="mat-elevation-z8">
                 <ng-container matColumnDef="title">
                     <th mat-header-cell *matHeaderCellDef>
-                        NAZIV FILMA:
+                        Naslov:
                     </th>
                     <td mat-cell *matCellDef="let element"> {{element.title}} </td>
                 </ng-container>
-    
+
                 <ng-container matColumnDef="runTime">
                     <th mat-header-cell *matHeaderCellDef>
-                        <i class="fa-solid fa-clock"></i>  TRAJANJE:
+                        <i class="fa-solid fa-clock"></i>  Dužina trajanja filma:
                     </th>
-                    <td mat-cell *matCellDef="let element"> {{element.runTime}}min</td>
+                    <td mat-cell *matCellDef="let element"> {{utils.formatRuntime(element.runTime)}}</td>
                 </ng-container>
-    
+
                 <ng-container matColumnDef="scheduledAt">
                     <th mat-header-cell *matHeaderCellDef>
-                        <i class="fa-solid fa-calendar-days"></i> POČETAK PROJEKCIJE:
+                        <i class="fa-solid fa-calendar-days"></i> Početak projekcije:
                     </th>
                     <td mat-cell *matCellDef="let element">
                         {{element.scheduledAt}}
                     </td>
                 </ng-container>
-    
+
                 <ng-container matColumnDef="price">
                     <th mat-header-cell *matHeaderCellDef>
-                        <i class="fa-solid fa-ticket"></i>  CENA:
+                        <i class="fa-solid fa-ticket"></i>  Cena karte:
                     </th>
                     <td mat-cell *matCellDef="let element">
                         {{element.price}} RSD
                     </td>
                 </ng-container>
-    
+
                 <ng-container matColumnDef="actions">
                     <th mat-header-cell *matHeaderCellDef>
-                        <i class="fa-solid fa-location-arrow"></i>  OSTALO:
+                        <i class="fa-solid fa-location-arrow"></i>  Potvrda:
                     </th>
                     <td mat-cell *matCellDef="let element" class="actions">
                         <div>
                             <button type="button" mat-button (click)="doPay(element)">
-                                <i class="fa-solid fa-cart-shopping"></i> Pay
+                                <i class="fa-solid fa-cart-shopping"></i> Plati
                             </button>
                             <button type="button" mat-button (click)="doCancel(element)">
-                                <i class="fa-solid fa-ban"></i> Cancel
+                                <i class="fa-solid fa-ban"></i> Otkaži
                             </button>
                         </div>
                     </td>
                 </ng-container>
-    
+
                 <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                 <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
             </table>
+          <h3>Ukupna cena karata: {{totalPrice}} RSD</h3>
         </div>
     </div>
 </div>
