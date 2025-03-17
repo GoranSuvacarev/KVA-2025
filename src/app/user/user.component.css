@@ -110,19 +110,3 @@ tr:nth-child(even) {
     background: rgba(255, 255, 255, 0.1);
 }
 
-
-@media (max-width: 768px) {
-    .user-card, .no-order {
-        width: 95%;
-    }
-
-    .actions {
-        flex-direction: column;
-        height: auto;
-    }
-
-    th, td {
-        padding: 8px;
-    }
-}
-

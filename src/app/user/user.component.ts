@@ -13,6 +13,7 @@ import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import { NgClass } from '@angular/common';
 import { NgFor } from '@angular/common';
+import {UtilsService} from '../../services/utils.service';
 
 @Component({
   selector: 'app-user',
@@ -41,7 +42,7 @@ export class UserComponent {
   public newPasswordValue = ''
   public repeatPasswordValue = ''
 
-  constructor(private router: Router) {
+  constructor(private router: Router, public utils: UtilsService) {
     if (!UserService.getActiveUser()) {
       router.navigate(['/home'])
       return

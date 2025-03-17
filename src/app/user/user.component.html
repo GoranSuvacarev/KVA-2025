@@ -60,7 +60,7 @@
                     <th mat-header-cell *matHeaderCellDef>
                         <i class="fa-regular fa-clock"></i> Trajanje
                     </th>
-                    <td mat-cell *matCellDef="let element"> {{element.runTime}} </td>
+                    <td mat-cell *matCellDef="let element"> {{utils.formatRuntime(element.runTime)}} </td>
                 </ng-container>
 
                 <ng-container matColumnDef="scheduledAt">
