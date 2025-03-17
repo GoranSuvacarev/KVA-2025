@@ -11,6 +11,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
+import {UtilsService} from '../../services/utils.service';
 
 @Component({
   selector: 'app-cart',
@@ -27,13 +28,13 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './cart.component.css'
 })
 export class CartComponent {
-  public displayedColumns: string[] = ['title', 'runTime', 'scheduledAt','actions'];
+  public displayedColumns: string[] = ['title', 'runTime', 'scheduledAt', 'price', 'actions'];
   public activeUser: UserModel | null = null
   public cart: TicketModel[] | null = null
   public totalPrice : number = 0
-  
 
-  constructor(private router: Router) {
+
+  constructor(private router: Router, public utils: UtilsService) {
     if (!UserService.getActiveUser()) {
       router.navigate(['/home'])
       return
@@ -43,14 +44,14 @@ export class CartComponent {
   }
 
   public doPay(ticket: TicketModel) {
-    
+
     for (let movie of this.activeUser!.tickets.filter(ticket => ticket.status === "watched")) {
       if(ticket.title == movie.title){
         this.doCancel(ticket)
         return
       }
     }
-      
+
     if (UserService.changeTicketStatus('watched', ticket.id, ticket.title)) {
       this.loadCart()
       alert('Karta za ' + ticket.title + ' je uspesno kupljena');
@@ -69,7 +70,7 @@ export class CartComponent {
       this.loadCart()
 
       alert('Rezervacija za ' + ticket.title + ' je otkazana')
-    
+
   }
 
   public loadCart(){
