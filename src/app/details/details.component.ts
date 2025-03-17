@@ -11,10 +11,11 @@ import { UserService } from '../../services/user.service';
 import { AxiosError } from 'axios';
 import { NgFor } from '@angular/common';
 import {UtilsService} from '../../services/utils.service';
+import {MatSnackBarModule, MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-details',
-  imports: [NgIf, LoadingComponent, MatCardModule, MatListModule, MatButtonModule, NgFor, RouterLink],
+  imports: [NgIf, LoadingComponent, MatCardModule, MatListModule, MatButtonModule, NgFor, RouterLink, MatSnackBarModule],
   templateUrl: './details.component.html',
   styleUrl: './details.component.css'
 })
@@ -25,7 +26,7 @@ export class DetailsComponent {
   isDescriptionExpanded: boolean = false;
   maxDescriptionLength: number = 800;
 
-  public constructor(private route: ActivatedRoute, public utils: UtilsService) {
+  public constructor(private route: ActivatedRoute, public utils: UtilsService, private snackBar: MatSnackBar) {
     route.params.subscribe(params => {
       MovieService.getMovieById(params['id'])
         .then(rsp => {
@@ -46,7 +47,22 @@ export class DetailsComponent {
       rating : null
     })
 
-    result ? alert('Film uspesno dodat u korpu') : alert('Morate biti ulogovani kako bi ste rezervisali kartu')
+    if (result) {
+      this.showSnackBar('Film uspešno dodat u korpu', 'success');
+    } else {
+      this.showSnackBar('Morate biti ulogovani kako biste rezervisali kartu', 'error');
+    }
+  }
+
+  private showSnackBar(message: string, type: 'success' | 'error'): void {
+    const config = {
+      duration: 3000,
+      horizontalPosition: 'center' as const,
+      verticalPosition: 'top' as const,
+      panelClass: type === 'success' ? ['success-snackbar'] : ['error-snackbar']
+    };
+
+    this.snackBar.open(message, 'Zatvori', config);
   }
 
   toggleDescription(): void {

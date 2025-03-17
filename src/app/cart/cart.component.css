@@ -48,10 +48,10 @@ h1{
     text-transform: uppercase;
     font-size: 3em;
     opacity: 0;
-    transform: translateY(50px); 
+    transform: translateY(50px);
     animation: fadeInUp 1.5s ease-out forwards;
     color: #fff; /* Text color */
-    text-shadow: 
+    text-shadow:
         2px 2px 4px rgba(0, 0, 0, 0.4),   /* Slight shadow for depth */
         0 0 25px rgba(47, 46, 46, 0.8),   /* Glowing effect */
         0 0 5px rgba(98, 98, 98, 0.8);
@@ -75,12 +75,12 @@ h1{
 .total-price-card {
     margin-top: 20px;
     padding: 15px;
-    background: #141313; 
+    background: #141313;
     border-radius: 12px;
     box-shadow: 0px 4px 10px rgba(14, 14, 14, 0.2);
     width: 250px;
     margin-right: auto;
-  
+
 }
 
 .price-container {
@@ -91,7 +91,7 @@ h1{
 
 .price-icon {
     font-size: 30px;
-    color: #ffd700; 
+    color: #ffd700;
 }
 
 .price-info {
@@ -110,5 +110,18 @@ h1{
     color: white;
 }
 
+:host ::ng-deep .success-snackbar {
+  background-color: #4caf50;
+  color: white;
+}
 
+:host ::ng-deep .error-snackbar {
+  background-color: #f44336;
+  color: white;
+}
+
+:host ::ng-deep .success-snackbar .mat-mdc-button,
+:host ::ng-deep .error-snackbar .mat-mdc-button {
+  color: white;
+}
 

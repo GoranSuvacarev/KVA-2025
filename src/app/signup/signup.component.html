@@ -1,51 +1,47 @@
 <mat-card class="auth-card">
     <mat-card-header>
-        <h1>Signup Form</h1>
+        <h1>Registracija</h1>
     </mat-card-header>
     <mat-card-content>
+      <mat-form-field class="full-width">
+        <mat-label>Odaberi omiljeni žanr</mat-label>
+        <mat-select [(ngModel)]="genre">
+          <mat-option *ngFor="let genre of genreNames" [value]="genre">
+            {{genre}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
         <mat-form-field class="full-width">
             <mat-label>Email</mat-label>
-            <input type="email" matInput placeholder="Input your email..." [(ngModel)]="email">
+            <input type="email" matInput placeholder="Unesi svoj email..." [(ngModel)]="email">
         </mat-form-field>
         <mat-form-field class="full-width">
-            <mat-label>First Name</mat-label>
-            <input type="text" matInput placeholder="Input your name..." [(ngModel)]="firstName">
+            <mat-label>Username</mat-label>
+            <input type="text" matInput placeholder="Unesi svoj username..." [(ngModel)]="lastName">
         </mat-form-field>
         <mat-form-field class="full-width">
-            <mat-label>Last Name</mat-label>
-            <input type="text" matInput placeholder="Input your surname..." [(ngModel)]="lastName">
+            <mat-label>Telefon</mat-label>
+            <input type="number" min="0" minlength="9" maxlength="10"  matInput placeholder="Unesi svoj telefon..." [(ngModel)]="phone">
         </mat-form-field>
         <mat-form-field class="full-width">
-            <mat-label>Phone</mat-label>
-            <input type="tel" matInput placeholder="Input your phone..." [(ngModel)]="phone">
+            <mat-label>Adresa</mat-label>
+            <input type="text" matInput placeholder="Unesi svoju adresu..." [(ngModel)]="address">
         </mat-form-field>
         <mat-form-field class="full-width">
-            <mat-label>Address</mat-label>
-            <input type="text" matInput placeholder="Input your address..." [(ngModel)]="address">
+            <mat-label>Šifra</mat-label>
+            <input type="password" matInput placeholder="Unesi svoj šifru..." [(ngModel)]="password">
         </mat-form-field>
         <mat-form-field class="full-width">
-            <mat-label>Password</mat-label>
-            <input type="password" matInput placeholder="Input your password..." [(ngModel)]="password">
-        </mat-form-field>
-        <mat-form-field class="full-width">
-            <mat-label>Repeat Password</mat-label>
-            <input type="password" matInput placeholder="Repeat your password..." [(ngModel)]="repeatPassword">
-        </mat-form-field>
-        <mat-form-field class="full-width">
-            <mat-label>Select Favourite Genre</mat-label>
-            <mat-select [(ngModel)]="genre">
-                <mat-option *ngFor="let genre of genreNames" [value]="genre">
-                    {{genre}}
-                </mat-option>
-            </mat-select>
+            <mat-label>Ponovi šifru</mat-label>
+            <input type="password" matInput placeholder="Ponovi svoju šifru..." [(ngModel)]="repeatPassword">
         </mat-form-field>
     </mat-card-content>
     <mat-card-actions>
-        <button type="button" mat-button (click)="doSignup()">
-            <i class="fa-solid fa-right-to-bracket"></i> Signup now
+        <button type="button" mat-raised-button (click)="doSignup()">
+            <i class="fa-solid fa-right-to-bracket"></i> Registruj se!
         </button>
         <a mat-button routerLink="/login">
-            <i class="fa-solid fa-arrow-up-right-from-square"></i> I already have an account
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Već imam nalog
         </a>
     </mat-card-actions>
 </mat-card>

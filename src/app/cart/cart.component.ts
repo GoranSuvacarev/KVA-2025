@@ -12,6 +12,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import {UtilsService} from '../../services/utils.service';
+import {MatSnackBarModule, MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-cart',
@@ -23,6 +24,7 @@ import {UtilsService} from '../../services/utils.service';
     MatFormFieldModule,
     MatInputModule,
     FormsModule,
+    MatSnackBarModule
   ],
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.css'
@@ -34,7 +36,7 @@ export class CartComponent {
   public totalPrice : number = 0
 
 
-  constructor(private router: Router, public utils: UtilsService) {
+  constructor(private router: Router, public utils: UtilsService, private snackBar: MatSnackBar) {
     if (!UserService.getActiveUser()) {
       router.navigate(['/home'])
       return
@@ -44,7 +46,6 @@ export class CartComponent {
   }
 
   public doPay(ticket: TicketModel) {
-
     for (let movie of this.activeUser!.tickets.filter(ticket => ticket.status === "watched")) {
       if(ticket.title == movie.title){
         this.doCancel(ticket)
@@ -54,23 +55,32 @@ export class CartComponent {
 
     if (UserService.changeTicketStatus('watched', ticket.id, ticket.title)) {
       this.loadCart()
-      alert('Karta za ' + ticket.title + ' je uspesno kupljena');
+      this.showSnackBar('Karta za ' + ticket.title + ' je uspešno kupljena', 'success');
     }
   }
 
   public doCancel(ticket: TicketModel) {
-      const arr = UserService.retrieveUsers()
-      for (let user of arr) {
-        if (user.email == this.activeUser!.email) {
-            user.tickets = this.activeUser?.tickets.filter(currentticket => currentticket.id !== ticket.id) || []
-            localStorage.setItem('users', JSON.stringify(arr))
-        }
+    const arr = UserService.retrieveUsers()
+    for (let user of arr) {
+      if (user.email == this.activeUser!.email) {
+        user.tickets = this.activeUser?.tickets.filter(currentticket => currentticket.id !== ticket.id) || []
+        localStorage.setItem('users', JSON.stringify(arr))
       }
+    }
 
-      this.loadCart()
+    this.loadCart()
+    this.showSnackBar('Rezervacija za ' + ticket.title + ' je otkazana', 'error');
+  }
 
-      alert('Rezervacija za ' + ticket.title + ' je otkazana')
+  private showSnackBar(message: string, type: 'success' | 'error'): void {
+    const config = {
+      duration: 3000,
+      horizontalPosition: 'center' as const,
+      verticalPosition: 'top' as const,
+      panelClass: type === 'success' ? ['success-snackbar'] : ['error-snackbar']
+    };
 
+    this.snackBar.open(message, 'Zatvori', config);
   }
 
   public loadCart(){

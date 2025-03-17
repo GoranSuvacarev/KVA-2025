@@ -139,3 +139,18 @@
   font-size: 1rem;
   font-weight: 500;
 }
+
+:host ::ng-deep .success-snackbar {
+  background-color: #4caf50;
+  color: white;
+}
+
+:host ::ng-deep .error-snackbar {
+  background-color: #f44336;
+  color: white;
+}
+
+:host ::ng-deep .success-snackbar .mat-mdc-button,
+:host ::ng-deep .error-snackbar .mat-mdc-button {
+  color: white;
+}

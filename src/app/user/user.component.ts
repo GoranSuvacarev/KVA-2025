@@ -14,6 +14,8 @@ import { FormsModule } from '@angular/forms';
 import { NgClass } from '@angular/common';
 import { NgFor } from '@angular/common';
 import {UtilsService} from '../../services/utils.service';
+import {MatOption, MatSelect} from '@angular/material/select';
+import {GenreModel} from '../../models/genre.model';
 
 @Component({
   selector: 'app-user',
@@ -28,7 +30,9 @@ import {UtilsService} from '../../services/utils.service';
     MatInputModule,
     FormsModule,
     NgClass,
-    NgFor
+    NgFor,
+    MatSelect,
+    MatOption
   ],
   templateUrl: './user.component.html',
   styleUrl: './user.component.css'
@@ -41,6 +45,9 @@ export class UserComponent {
   public oldPasswordValue = ''
   public newPasswordValue = ''
   public repeatPasswordValue = ''
+
+  public genreNames : string[] = []
+  public genre = ''
 
   constructor(private router: Router, public utils: UtilsService) {
     if (!UserService.getActiveUser()) {

@@ -10,10 +10,11 @@ import { MatSelectModule } from '@angular/material/select';
 import { NgFor } from '@angular/common';
 import { UserService } from '../../services/user.service';
 import { GenreModel } from '../../models/genre.model';
+import { MatSnackBarModule, MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-signup',
-  imports: [MatCardModule, NgFor, RouterLink, MatFormFieldModule, MatInputModule, FormsModule, MatButtonModule, MatSelectModule],
+  imports: [MatCardModule, NgFor, RouterLink, MatFormFieldModule, MatInputModule, FormsModule, MatButtonModule, MatSelectModule, MatSnackBarModule],
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.css'
 })
@@ -30,7 +31,7 @@ export class SignupComponent {
   public address = ''
   public genre = ''
 
-  public constructor(private router: Router) {
+  public constructor(private router: Router, private snackBar: MatSnackBar) {
     MovieService.getGenres()
       .then(rsp => {
         this.genres = rsp.data;
@@ -39,18 +40,18 @@ export class SignupComponent {
           let name = genre.name;
           this.genreNames.push(name);
         }
-    })
+      })
   }
 
   public doSignup() {
     if (this.email == '' || this.password == '') {
-      alert('Email and password are required fields')
-      return
+      this.showSnackBar('Email i lozinka su obavezna polja', 'error');
+      return;
     }
 
     if (this.password !== this.repeatPassword) {
-      alert('Passwords dont match')
-      return
+      this.showSnackBar('Lozinke se ne podudaraju', 'error');
+      return;
     }
 
     const result = UserService.createUser({
@@ -62,14 +63,24 @@ export class SignupComponent {
       address: this.address,
       favoriteGenre: this.genre,
       tickets: []
-    })
+    });
 
     if (result) {
-      alert('Successfully registered!');
+      this.showSnackBar('Uspešno ste se registrovali!', 'success');
       this.router.navigate(['/login']);
     } else {
-      alert('Email is already taken');
+      this.showSnackBar('Email adresa je već u upotrebi', 'error');
     }
+  }
 
+  private showSnackBar(message: string, type: 'success' | 'error'): void {
+    const config = {
+      duration: 3000,
+      horizontalPosition: 'center' as const,
+      verticalPosition: 'top' as const,
+      panelClass: type === 'success' ? ['success-snackbar'] : ['error-snackbar']
+    };
+
+    this.snackBar.open(message, 'Zatvori', config);
   }
 }
