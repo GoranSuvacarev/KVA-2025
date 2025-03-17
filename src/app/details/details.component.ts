@@ -70,5 +70,26 @@ export class DetailsComponent {
       this.movie.description.length > this.maxDescriptionLength);
   }
 
-  
+  calculateRating(){
+    let rating : number = 0
+    let users = UserService.retrieveUsers()
+    let reviewCount : number = 0
+
+    for(let user of users){
+      for(let ticket of user.tickets){
+        if(ticket.rating != 0){
+          if(ticket.title == this.movie!.title){
+            rating += ticket.rating!
+            reviewCount++
+          }
+        }
+      }
+    }
+
+    if(rating == 0){
+      return "Nema recenzija"
+    }
+
+    return rating/reviewCount + "/5"
+  }
 }
