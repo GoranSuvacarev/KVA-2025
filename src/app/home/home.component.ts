@@ -122,5 +122,13 @@ export class HomeComponent {
         return false
       })
   }
+
+  resetFilter(){
+    this.userInput = ''
+    this.genre = ''
+    this.selectedActor = ''
+    this.selectedDirector = ''
+    this.filteredMovies = this.movies
+  }
 }
 
