@@ -9,11 +9,38 @@
 
 h1{
     text-transform: uppercase;
+    font-size: 3em;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(50px); 
+    animation: fadeInUp 1.5s ease-out forwards;
+    color: #fff; /* Text color */
+    text-shadow: 
+        2px 2px 4px rgba(0, 0, 0, 0.4),   /* Slight shadow for depth */
+        0 0 25px rgba(47, 46, 46, 0.8),   /* Glowing effect */
+        0 0 5px rgba(98, 98, 98, 0.8);
 }
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    50% {
+        opacity: 0.7;
+        transform: translateY(-10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 .user-card {
     margin: 20px auto; 
     max-width: 800px;
     width: 80%; 
+    border-radius: 10 10;
 }
 
 
@@ -64,7 +91,10 @@ h1{
 
 table {
     width: 100%;
-    border-collapse: collapse;
+    border-collapse: separate;
+    border-radius: 25px; 
+    overflow: hidden; 
+    border-spacing: 0;
 }
 
 th, td {

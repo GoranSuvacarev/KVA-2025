@@ -3,8 +3,8 @@
     flex-direction: column;
     min-height: 88.45vh;
     align-items: center; 
-    background: url('https://wallpapers.com/images/hd/cinema-background-csjrmkuhfvvumb2q.jpg') no-repeat center;
-    background-size: cover;
+    background: url('https://wallpapercrafter.com/desktop/202229-red-seat-cinema-and-theatre-hd.jpg') no-repeat center;
+    background-size: cover; 
 }
 html, body {
     height: 100%;
@@ -15,7 +15,6 @@ html, body {
 }
 
 
-
 .wrapper {
     position: relative;
     z-index: 1; 
@@ -23,6 +22,26 @@ html, body {
     background: rgba(0, 0, 0, 0.6); 
     color: white;
     padding: 20px;
+}
+table.mat-elevation-z8 {
+    margin-top: 20px; 
+    border-radius: 10px; 
+    overflow: hidden; 
+    width: 100%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+}
+
+th, td {
+    padding: 16px; 
+    text-align: center;
+}
+
+
+
+
+div {
+    margin-top: 40px; 
+    border-radius: 20px;
 }
 
 
