@@ -5,5 +5,5 @@ export interface TicketModel {
     scheduledAt: string
     price: number 
     status: 'booked' | 'watched' 
-    rating : boolean | null
+    rating : number | null
 }

@@ -11,6 +11,8 @@ import { MatAccordion, MatExpansionModule } from '@angular/material/expansion';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
+import { NgClass } from '@angular/common';
+import { NgFor } from '@angular/common';
 
 @Component({
   selector: 'app-user',
@@ -23,7 +25,10 @@ import { FormsModule } from '@angular/forms';
     MatAccordion,
     MatFormFieldModule,
     MatInputModule,
-    FormsModule],
+    FormsModule,
+    NgClass,
+    NgFor
+  ],
   templateUrl: './user.component.html',
   styleUrl: './user.component.css'
 })
@@ -71,11 +76,11 @@ export class UserComponent {
     this.repeatPasswordValue = ''
   }
 
-  public doRating(ticket: TicketModel, r: boolean) {
-    if (UserService.changeRating(r, ticket.id)) {
-      this.loadWatchedMovies()
+  public doRating(ticket: TicketModel, rating: number) {
+    if (UserService.changeRating(rating, ticket.id)) {
+        this.loadWatchedMovies();
     }
-  }
+}
 
   public loadWatchedMovies(){
     this.user = UserService.getActiveUser()

@@ -26,6 +26,7 @@ export class HomeComponent {
   public genres: GenreModel[] = []
   public genreNames : string[] = ["Prikaži sve"]
   public genre = ''
+ 
 
   constructor(public utils: UtilsService, private router: Router) {
     MovieService.getMovies()
@@ -46,5 +47,6 @@ export class HomeComponent {
   goToDetails(movieId: number) {
     this.router.navigate(['/details', movieId]);
   }
+
 }
 

@@ -94,29 +94,29 @@ export class UserService {
     }
 
 
-    static changeRating(r: boolean, id: number) {
-        const active = this.getActiveUser()
-        if (active) {
-            const arr = this.retrieveUsers()
-            for (let user of arr) {
-                if (user.email == active.email) {
-                    for (let ticket of user.tickets) {
-                        if (ticket.id == id) {
-                            if(ticket.rating == r){
-                                ticket.rating = null
-                            }
-                            else{
-                                ticket.rating = r
-                            }
-                        }
+static changeRating(rating: number, id: number) {
+    const active = this.getActiveUser();
+    if (!active) return false;
+
+    const users = this.retrieveUsers();
+    for (let user of users) {
+        if (user.email === active.email) {
+            for (let ticket of user.tickets) {
+                if (ticket.id === id) {
+                    if (ticket.rating === rating) {
+                        ticket.rating = null; 
+                    } else {
+                        ticket.rating = rating; 
                     }
-                    localStorage.setItem('users', JSON.stringify(arr))
-                    return true
                 }
             }
+            localStorage.setItem('users', JSON.stringify(users)); 
+            return true;
         }
-        return false
     }
+    return false;
+}
+
 
     static changePassword(newPassword: string): boolean {
 

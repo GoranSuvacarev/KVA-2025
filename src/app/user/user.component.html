@@ -1,3 +1,4 @@
+
 <div class="wrapper" *ngIf="user">
 
     <mat-card class="user-card" appearance="outlined">
@@ -5,8 +6,8 @@
             <img mat-card-avatar class="example-header-image" [src]="['https://ui-avatars.com/api/?name='+user.email]">
             <mat-card-title>{{user.firstName}} {{user.lastName}}</mat-card-title>
             <mat-card-subtitle>
-                <p class="no-border">Total tickets: {{user.tickets.length}}</p>
-                <p class="no-border">Favorite genre: {{user.favoriteGenre}}</p>
+                <p class="no-border"><strong>Total tickets : </strong> {{user.tickets.length}}</p>
+                <p class="no-border"><strong>Favourite genre : </strong> {{user.favoriteGenre}}</p>
             </mat-card-subtitle>
         </mat-card-header>
         <mat-card-content class="user-card-content">
@@ -50,21 +51,21 @@
 
                 <ng-container matColumnDef="title">
                     <th mat-header-cell *matHeaderCellDef>
-                        <i class="fa-solid fa-map-location-dot"></i> Naslov
+                        Naslov
                     </th>
                     <td mat-cell *matCellDef="let element"> {{element.title}} </td>
                 </ng-container>
     
                 <ng-container matColumnDef="runTime">
                     <th mat-header-cell *matHeaderCellDef>
-                        <i class="fa-solid fa-plane-circle-exclamation"></i> Trajanje
+                        <i class="fa-regular fa-clock"></i> Trajanje
                     </th>
                     <td mat-cell *matCellDef="let element"> {{element.runTime}} </td>
                 </ng-container>
     
                 <ng-container matColumnDef="scheduledAt">
                     <th mat-header-cell *matHeaderCellDef>
-                        <i class="fa-solid fa-plane"></i> Početak projekcije
+                        <i class="fa-solid fa-calendar"></i> Početak projekcije
                     </th>
                     <td mat-cell *matCellDef="let element">
                         {{element.scheduledAt}}
@@ -73,21 +74,14 @@
     
                 <ng-container matColumnDef="price">
                     <th mat-header-cell *matHeaderCellDef>
-                        <i class="fa-solid fa-arrow-up-wide-short"></i>Cena
+                        <i class="fa-solid fa-ticket"></i> Cena
                     </th>
                     <td mat-cell *matCellDef="let element">
                         {{element.price}}
                     </td>
                 </ng-container>
 
-                <ng-container matColumnDef="status">
-                    <th mat-header-cell *matHeaderCellDef>
-                        <i class="fa-solid fa-arrow-up-wide-short"></i>Status
-                    </th>
-                    <td mat-cell *matCellDef="let element">
-                        {{element.status}}
-                    </td>
-                </ng-container>
+              
     
                 <ng-container matColumnDef="rating">
                     <th mat-header-cell *matHeaderCellDef>
@@ -104,22 +98,22 @@
                             DISLIKED
                         </div>
                     </td>
-                </ng-container>
+                </ng-container> 
 
                 <ng-container matColumnDef="actions">
                     <th mat-header-cell *matHeaderCellDef>
                         <i class="fa-solid fa-location-arrow"></i> Actions
                     </th>
-                    <td mat-cell *matCellDef="let element" class="actions">
-                            <button type="button" mat-button (click)="doRating(element, true)">
-                                <i class="fa-solid fa-thumbs-up"></i> Like
-                            </button>
-                            <button type="button" mat-button (click)="doRating(element, false)">
-                                <i class="fa-solid fa-thumbs-down"></i> Dislike
-                            </button>
+                    <td mat-cell *matCellDef="let ticket" class="actions">
+                        <ng-container *ngFor="let star of [1, 2, 3, 4, 5]">
+                            <i 
+                                class="fa-solid fa-star"
+                                [ngClass]="{'checked': ticket.rating >= star}" 
+                                (click)="doRating(ticket, star)">
+                            </i>
+                        </ng-container>
                     </td>
                 </ng-container>
-
                 <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                 <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
             </table>

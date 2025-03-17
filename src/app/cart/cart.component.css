@@ -1,38 +1,29 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    min-height: 88.45vh;
+    align-items: center; 
+    background: url('https://wallpapers.com/images/hd/cinema-background-csjrmkuhfvvumb2q.jpg') no-repeat center;
+    background-size: cover;
+}
 html, body {
     height: 100%;
     margin: 0;
     padding: 0;
     overflow: hidden;
+   
 }
 
-
-.blur-bg {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('https://static.euronews.com/articles/stories/06/80/87/12/1200x675_cmsv2_1ddf4688-f400-5af3-8d02-b1ca257b1535-6808712.jpg'); 
-    background-size: cover;
-    background-position: center;
-    filter: blur(10px);
-    opacity: 0.4;
-    z-index: -1;
-}
 
 
 .wrapper {
     position: relative;
     z-index: 1; 
     max-width: 100%;
-    background: rgba(0, 0, 0, 0.6);
-    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.6); 
     color: white;
+    padding: 20px;
 }
 
-
-.blur-bg {
-    border: 2px solid red;
-}
 
 

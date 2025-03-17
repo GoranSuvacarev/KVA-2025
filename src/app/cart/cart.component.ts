@@ -11,6 +11,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
+import { NgStyle } from '@angular/common';
 
 @Component({
   selector: 'app-cart',
@@ -21,7 +22,8 @@ import { FormsModule } from '@angular/forms';
     MatExpansionModule,
     MatFormFieldModule,
     MatInputModule,
-    FormsModule],
+    FormsModule,
+    NgStyle],
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.css'
 })
