@@ -30,8 +30,7 @@ mat-toolbar i {
   color: #fff;
   padding: 20px;
   width: 100%;
-  position: relative;
-  bottom: 0;
+  margin-top: auto;
 }
 
 .header {
@@ -52,5 +51,13 @@ html, body {
 }
 
 .content {
-  flex: 1;
+  flex: 1 0 auto;
+  display: flex;
+  align-items: center;
+}
+
+.content ::ng-deep router-outlet + * {
+  width: 100%;
+  height: auto;
+  flex: 0 0 auto;
 }
