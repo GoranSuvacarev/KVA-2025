@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 html, body {
     margin: 0;
     padding: 0;
@@ -61,20 +62,32 @@ html, body {
 .movie-map {
     width: auto;
     height: 100%;
+=======
+.movie-content {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+  padding: 40px;
+  border-radius: 10px;
+  backdrop-filter: blur(5px);
+>>>>>>> f8fca6d1a024f28ffcfc4b3a982b9b36b588ed19
 }
 
 .opis {
-    word-wrap: break-word;  
-    white-space: normal;    
-    overflow-wrap: break-word; 
+    word-wrap: break-word;
+    white-space: normal;
+    overflow-wrap: break-word;
     max-height: 100%;
 }
 
 h2 {
-    text-transform: uppercase;
+  text-transform: uppercase;
+  margin-left: 15px;
 }
-
-
 
 .bold-text {
     font-weight: bold;
@@ -83,7 +96,6 @@ h2 {
 
 
 
-  
-  
-  
-  
+
+
+
