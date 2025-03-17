@@ -55,14 +55,14 @@
                     </th>
                     <td mat-cell *matCellDef="let element"> {{element.title}} </td>
                 </ng-container>
-    
+
                 <ng-container matColumnDef="runTime">
                     <th mat-header-cell *matHeaderCellDef>
                         <i class="fa-regular fa-clock"></i> Trajanje
                     </th>
                     <td mat-cell *matCellDef="let element"> {{element.runTime}} </td>
                 </ng-container>
-    
+
                 <ng-container matColumnDef="scheduledAt">
                     <th mat-header-cell *matHeaderCellDef>
                         <i class="fa-solid fa-calendar"></i> Početak projekcije
@@ -71,7 +71,7 @@
                         {{element.scheduledAt}}
                     </td>
                 </ng-container>
-    
+
                 <ng-container matColumnDef="price">
                     <th mat-header-cell *matHeaderCellDef>
                         <i class="fa-solid fa-ticket"></i> Cena
@@ -87,9 +87,9 @@
                     </th>
                     <td mat-cell *matCellDef="let ticket" class="actions">
                         <ng-container *ngFor="let star of [1, 2, 3, 4, 5]">
-                            <i 
+                            <i
                                 class="fa-solid fa-star"
-                                [ngClass]="{'checked': ticket.rating >= star}" 
+                                [ngClass]="{'checked': ticket.rating >= star}"
                                 (click)="doRating(ticket, star)">
                             </i>
                         </ng-container>
