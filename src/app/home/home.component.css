@@ -68,7 +68,7 @@ mat-card-content {
 
 .search_form{
   min-width: 210px;
-  max-width: 420px;
+  max-width: 280px;
   width: 100%;
 }
 
@@ -76,6 +76,14 @@ mat-card-content {
   width: 100%;
 }
 
-.full-width{
+.genre-width{
+  width: 280px;
+}
+
+.glumci-width{
+  width: 280px;
+}
+
+.reziseri-width{
   width: 280px;
 }

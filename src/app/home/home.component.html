@@ -22,7 +22,7 @@
   </div>
 
   <div class="genre_form">
-    <mat-form-field class="full-width">
+    <mat-form-field class="genre-width">
       <mat-label>Žanrovi</mat-label>
       <mat-select (selectionChange)="doFilter()" [(ngModel)]="genre">
         <mat-option *ngFor="let genre of genreNames" [value]="genre">
@@ -33,7 +33,7 @@
   </div>
 
   <div class="genre_form">
-    <mat-form-field class="full-width">
+    <mat-form-field class="glumci-width">
       <mat-label>Glumci</mat-label>
       <mat-select (selectionChange)="doFilter()" [(ngModel)]="selectedActor">
         <mat-option *ngFor="let selectedActor of actorNames" [value]="selectedActor">
@@ -44,7 +44,7 @@
   </div>
 
   <div class="genre_form">
-    <mat-form-field class="full-width">
+    <mat-form-field class="reziseri-width">
       <mat-label>Režiseri</mat-label>
       <mat-select (selectionChange)="doFilter()" [(ngModel)]="selectedDirector">
         <mat-option *ngFor="let selectedDirector of directorNames" [value]="selectedDirector">
