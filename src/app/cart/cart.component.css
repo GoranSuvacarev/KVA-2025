@@ -3,8 +3,9 @@
     flex-direction: column;
     min-height: 88.45vh;
     align-items: center; 
-    background: url('https://wallpapercrafter.com/desktop/202229-red-seat-cinema-and-theatre-hd.jpg') no-repeat center;
+    background: url('https://img.freepik.com/free-photo/popcorn-cinema_23-2147988937.jpg?t=st=1742231598~exp=1742235198~hmac=bf7ca6028da03953880ac83a11510e41620d8ba6588e7643a63d13f6c5952012&w=1380') no-repeat center;
     background-size: cover; 
+    background-position: center;
 }
 html, body {
     height: 100%;
