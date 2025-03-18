@@ -95,6 +95,11 @@ table {
   border-spacing: 0;
 }
 
+.mat-mdc-table .mat-mdc-cell,
+.mat-mdc-table .mat-mdc-header-cell {
+  font-size: 1.2rem !important;
+}
+
 th, td {
   padding: 20px;
   text-align: center;
@@ -126,4 +131,3 @@ mat-expansion-panel button {
   background: #1e2124;
   margin-bottom: 15px;
 }
-

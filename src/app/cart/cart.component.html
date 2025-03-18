@@ -1,7 +1,7 @@
 <div class="background-image"></div>
 <div class="wrapper">
     <mat-card appearance="outlined" *ngIf="cart!.length == 0" class="no-order">
-            <h1>Cart is empty!</h1>
+            <h1>Korpa je prazna!</h1>
     </mat-card>
 
     <div *ngIf="cart!.length > 0">
@@ -67,7 +67,7 @@
             <div class="price-container">
                 <i class="fa-solid fa-coins price-icon"></i>
                 <div class="price-info">
-                    <span class="price-label">Ukupna cena</span>
+                    <span class="price-label">Ukupna cena:</span>
                     <span class="total-price">{{ totalPrice }} RSD</span>
                 </div>
             </div>

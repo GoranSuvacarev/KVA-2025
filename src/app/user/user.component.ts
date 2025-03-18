@@ -47,7 +47,7 @@ export class UserComponent {
   public watchedMovies: TicketModel[] | null = null
 
 
-  
+
   public oldPasswordValue = ''
   public newPasswordValue = ''
   public repeatPasswordValue = ''
@@ -65,7 +65,7 @@ export class UserComponent {
     MovieService.getGenres()
           .then(rsp => {
             this.genres = rsp.data;
-    
+
             for (let genre of this.genres) {
               let name = genre.name;
               this.genreNames.push(name);
@@ -104,13 +104,13 @@ export class UserComponent {
 
   public doUpdateUser() {
     if (this.user == null) {
-      alert('User not defined')
+      this.utils.showSnackBar('Greška pri promeni podataka', 'error', this.snackBar);
       return
     }
 
     UserService.updateUser(this.copyUser!)
     this.user = UserService.getActiveUser()
-    alert('User was updated')
+    this.utils.showSnackBar('Korisničke informacije uspešno ažurirane', 'success', this.snackBar);
   }
 
   public doRating(ticket: TicketModel, rating: number) {

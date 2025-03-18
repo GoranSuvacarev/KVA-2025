@@ -34,6 +34,11 @@ table.mat-elevation-z8 {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+.mat-mdc-table .mat-mdc-cell,
+.mat-mdc-table .mat-mdc-header-cell {
+  font-size: 1.2rem !important;
+}
+
 th, td {
   padding: 16px;
   text-align: center;
@@ -73,20 +78,19 @@ h1{
 }
 
 .total-price-card {
-    margin-top: 20px;
-    padding: 15px;
+    margin-top: 30px;
+    padding: 10px;
     background: #141313;
     border-radius: 12px;
     box-shadow: 0px 4px 10px rgba(14, 14, 14, 0.2);
     width: 250px;
     margin-right: auto;
-
 }
 
 .price-container {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 20px;
 }
 
 .price-icon {
@@ -100,7 +104,7 @@ h1{
 }
 
 .price-label {
-    font-size: 14px;
+    font-size: 1.3rem;
     color: white;
 }
 

@@ -56,4 +56,3 @@ button[mat-button], a[mat-button] {
 :host ::ng-deep .error-snackbar .mat-mdc-button {
   color: white;
 }
-
