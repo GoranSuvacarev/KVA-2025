@@ -17,6 +17,7 @@ import {UtilsService} from '../../services/utils.service';
 import {MatOption, MatSelect} from '@angular/material/select';
 import {GenreModel} from '../../models/genre.model';
 import {MatSnackBarModule, MatSnackBar} from '@angular/material/snack-bar';
+import { MovieService } from '../../services/movie.service';
 
 @Component({
   selector: 'app-user',
@@ -42,12 +43,16 @@ import {MatSnackBarModule, MatSnackBar} from '@angular/material/snack-bar';
 export class UserComponent {
   public displayedColumns: string[] = ['title', 'runTime', 'scheduledAt', 'price','rating'];
   public user: UserModel | null = null
+  public copyUser : UserModel | null = null
   public watchedMovies: TicketModel[] | null = null
 
+
+  
   public oldPasswordValue = ''
   public newPasswordValue = ''
   public repeatPasswordValue = ''
 
+  public genres : GenreModel[] = []
   public genreNames : string[] = []
   public genre = ''
 
@@ -57,7 +62,17 @@ export class UserComponent {
       return
     }
 
-    this.loadWatchedMovies()
+    MovieService.getGenres()
+          .then(rsp => {
+            this.genres = rsp.data;
+    
+            for (let genre of this.genres) {
+              let name = genre.name;
+              this.genreNames.push(name);
+            }
+          })
+
+    this.loadProfile()
   }
 
   public doChangePassword() {
@@ -87,17 +102,29 @@ export class UserComponent {
     this.repeatPasswordValue = '';
   }
 
+  public doUpdateUser() {
+    if (this.user == null) {
+      alert('User not defined')
+      return
+    }
+
+    UserService.updateUser(this.copyUser!)
+    this.user = UserService.getActiveUser()
+    alert('User was updated')
+  }
+
   public doRating(ticket: TicketModel, rating: number) {
     if (UserService.changeRating(rating, ticket.id)) {
-      this.loadWatchedMovies();
+      this.loadProfile();
       this.utils.showSnackBar('Ocena je uspešno dodata', 'success', this.snackBar);
     } else {
       this.utils.showSnackBar('Greška pri dodavanju ocene', 'error', this.snackBar);
     }
   }
 
-  public loadWatchedMovies(){
+  public loadProfile(){
     this.user = UserService.getActiveUser()
+    this.copyUser = UserService.getActiveUser()
     this.watchedMovies = this.user?.tickets.filter(ticket => ticket.status === "watched") || [];
   }
 }

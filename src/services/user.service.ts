@@ -8,8 +8,7 @@ export class UserService {
             const arr: UserModel[] = [
                 {
                     email: 'user@example.com',
-                    firstName: 'Example',
-                    lastName: 'User',
+                    username: 'Example',
                     phone: '+3816123456789',
                     address: 'Mokroluska 14, Vozdovac',
                     favoriteGenre: 'Fantazija',
@@ -130,5 +129,20 @@ static changeRating(rating: number, id: number) {
         }
 
         return false
+    }
+
+    static updateUser(model: UserModel) {
+        const users = this.retrieveUsers()
+        for (let u of users) {
+            if (u.email === model.email) {
+                u.username = model.username
+                u.email = model.email
+                u.address = model.address
+                u.phone = model.phone
+                u.favoriteGenre = model.favoriteGenre
+            }
+        }
+
+        localStorage.setItem('users', JSON.stringify(users))
     }
 }

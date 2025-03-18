@@ -26,8 +26,7 @@ export class SignupComponent {
   public email = ''
   public password = ''
   public repeatPassword = ''
-  public firstName = ''
-  public lastName = ''
+  public username = ''
   public phone = ''
   public address = ''
   public genre = ''
@@ -58,8 +57,7 @@ export class SignupComponent {
     const result = UserService.createUser({
       email: this.email,
       password: this.password,
-      firstName: this.firstName,
-      lastName: this.lastName,
+      username: this.username,
       phone: this.phone,
       address: this.address,
       favoriteGenre: this.genre,

@@ -2,8 +2,7 @@ import { TicketModel } from "./ticket.model"
 
 export interface UserModel {
     email: string
-    firstName: string
-    lastName: string
+    username: string
     phone: string
     address: string
     favoriteGenre: string
