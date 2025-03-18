@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Injectable({
   providedIn: 'root'
@@ -22,4 +23,17 @@ export class UtilsService {
     const remainingMinutes = minutes % 60;
     return `${hours}h ${remainingMinutes}min`;
   }
+
+  public showSnackBar(message: string, type: 'success' | 'error', bar: MatSnackBar): void {
+    const config = {
+      duration: 3000,
+      horizontalPosition: 'center' as const,
+      verticalPosition: 'top' as const,
+      panelClass: type === 'success' ? ['success-snackbar'] : ['error-snackbar']
+    };
+
+    bar.open(message, 'Zatvori', config);
+  }
 }
+
+

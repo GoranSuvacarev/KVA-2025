@@ -48,21 +48,10 @@ export class DetailsComponent {
     })
 
     if (result) {
-      this.showSnackBar('Film uspešno dodat u korpu', 'success');
+      this.utils.showSnackBar('Film uspešno dodat u korpu', 'success', this.snackBar);
     } else {
-      this.showSnackBar('Morate biti ulogovani kako biste rezervisali kartu', 'error');
+      this.utils.showSnackBar('Morate biti ulogovani kako biste rezervisali kartu', 'error', this.snackBar);
     }
-  }
-
-  private showSnackBar(message: string, type: 'success' | 'error'): void {
-    const config = {
-      duration: 3000,
-      horizontalPosition: 'center' as const,
-      verticalPosition: 'top' as const,
-      panelClass: type === 'success' ? ['success-snackbar'] : ['error-snackbar']
-    };
-
-    this.snackBar.open(message, 'Zatvori', config);
   }
 
   toggleDescription(): void {

@@ -16,6 +16,7 @@ import { NgFor } from '@angular/common';
 import {UtilsService} from '../../services/utils.service';
 import {MatOption, MatSelect} from '@angular/material/select';
 import {GenreModel} from '../../models/genre.model';
+import {MatSnackBarModule, MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-user',
@@ -32,7 +33,8 @@ import {GenreModel} from '../../models/genre.model';
     NgClass,
     NgFor,
     MatSelect,
-    MatOption
+    MatOption,
+    MatSnackBarModule
   ],
   templateUrl: './user.component.html',
   styleUrl: './user.component.css'
@@ -49,7 +51,7 @@ export class UserComponent {
   public genreNames : string[] = []
   public genre = ''
 
-  constructor(private router: Router, public utils: UtilsService) {
+  constructor(private router: Router,  public utils: UtilsService, private snackBar: MatSnackBar) {
     if (!UserService.getActiveUser()) {
       router.navigate(['/home'])
       return
@@ -59,36 +61,40 @@ export class UserComponent {
   }
 
   public doChangePassword() {
-    if (this.oldPasswordValue == '' || this.newPasswordValue == null) {
-      alert('Password cant be empty')
-      return
+    if (this.oldPasswordValue == '' || this.newPasswordValue == '') {
+      this.utils.showSnackBar('Lozinka ne može biti prazna', 'error', this.snackBar);
+      return;
     }
 
     if (this.newPasswordValue !== this.repeatPasswordValue) {
-      alert('Password dont match')
-      return
+      this.utils.showSnackBar('Lozinke se ne podudaraju', 'error', this.snackBar);
+      return;
     }
 
     if (this.oldPasswordValue !== this.user?.password) {
-      alert('Password dont match')
-      return
+      this.utils.showSnackBar('Trenutna lozinka nije ispravna', 'error', this.snackBar);
+      return;
     }
 
-    alert(
-      UserService.changePassword(this.newPasswordValue) ?
-        'Password has been changed' : 'Failed to change password'
-    )
+    if (UserService.changePassword(this.newPasswordValue)) {
+      this.utils.showSnackBar('Lozinka je uspešno promenjena', 'success', this.snackBar);
+    } else {
+      this.utils.showSnackBar('Greška pri promeni lozinke', 'error', this.snackBar);
+    }
 
-    this.oldPasswordValue = ''
-    this.newPasswordValue = ''
-    this.repeatPasswordValue = ''
+    this.oldPasswordValue = '';
+    this.newPasswordValue = '';
+    this.repeatPasswordValue = '';
   }
 
   public doRating(ticket: TicketModel, rating: number) {
     if (UserService.changeRating(rating, ticket.id)) {
-        this.loadWatchedMovies();
+      this.loadWatchedMovies();
+      this.utils.showSnackBar('Ocena je uspešno dodata', 'success', this.snackBar);
+    } else {
+      this.utils.showSnackBar('Greška pri dodavanju ocene', 'error', this.snackBar);
     }
-}
+  }
 
   public loadWatchedMovies(){
     this.user = UserService.getActiveUser()

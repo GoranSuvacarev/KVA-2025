@@ -7,6 +7,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { UserService } from '../../services/user.service';
 import { Router, RouterLink } from '@angular/router';
 import { MatSnackBarModule, MatSnackBar } from '@angular/material/snack-bar';
+import {UtilsService} from '../../services/utils.service';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +20,7 @@ export class LoginComponent {
   public email: string = ''
   public password: string = ''
 
-  constructor(private router: Router, private snackBar: MatSnackBar) {
+  constructor(private router: Router, public utils: UtilsService, private snackBar: MatSnackBar) {
     if (UserService.getActiveUser()) {
       router.navigate(['/user'])
       return
@@ -32,17 +33,6 @@ export class LoginComponent {
       return
     }
 
-    this.showSnackBar('Pogrešan email ili lozinka', 'error');
-  }
-
-  private showSnackBar(message: string, type: 'success' | 'error'): void {
-    const config = {
-      duration: 3000,
-      horizontalPosition: 'center' as const,
-      verticalPosition: 'top' as const,
-      panelClass: type === 'success' ? ['success-snackbar'] : ['error-snackbar']
-    };
-
-    this.snackBar.open(message, 'Zatvori', config);
+    this.utils.showSnackBar('Pogrešan email ili lozinka', 'error', this.snackBar);
   }
 }

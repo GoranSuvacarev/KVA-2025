@@ -36,7 +36,7 @@ export class CartComponent {
   public totalPrice : number = 0
 
 
-  constructor(private router: Router, public utils: UtilsService, private snackBar: MatSnackBar) {
+  constructor(private router: Router, public utils: UtilsService, public snackBar: MatSnackBar) {
     if (!UserService.getActiveUser()) {
       router.navigate(['/home'])
       return
@@ -55,7 +55,7 @@ export class CartComponent {
 
     if (UserService.changeTicketStatus('watched', ticket.id, ticket.title)) {
       this.loadCart()
-      this.showSnackBar('Karta za ' + ticket.title + ' je uspešno kupljena', 'success');
+      this.utils.showSnackBar('Karta za ' + ticket.title + ' je uspešno kupljena', 'success', this.snackBar);
     }
   }
 
@@ -69,18 +69,7 @@ export class CartComponent {
     }
 
     this.loadCart()
-    this.showSnackBar('Rezervacija za ' + ticket.title + ' je otkazana', 'error');
-  }
-
-  private showSnackBar(message: string, type: 'success' | 'error'): void {
-    const config = {
-      duration: 3000,
-      horizontalPosition: 'center' as const,
-      verticalPosition: 'top' as const,
-      panelClass: type === 'success' ? ['success-snackbar'] : ['error-snackbar']
-    };
-
-    this.snackBar.open(message, 'Zatvori', config);
+    this.utils.showSnackBar('Rezervacija za ' + ticket.title + ' je otkazana', 'error', this.snackBar );
   }
 
   public loadCart(){

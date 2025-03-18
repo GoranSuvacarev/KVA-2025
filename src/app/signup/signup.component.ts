@@ -11,6 +11,7 @@ import { NgFor } from '@angular/common';
 import { UserService } from '../../services/user.service';
 import { GenreModel } from '../../models/genre.model';
 import { MatSnackBarModule, MatSnackBar } from '@angular/material/snack-bar';
+import {UtilsService} from '../../services/utils.service';
 
 @Component({
   selector: 'app-signup',
@@ -31,7 +32,7 @@ export class SignupComponent {
   public address = ''
   public genre = ''
 
-  public constructor(private router: Router, private snackBar: MatSnackBar) {
+  public constructor(private router: Router, public utils: UtilsService, private snackBar: MatSnackBar) {
     MovieService.getGenres()
       .then(rsp => {
         this.genres = rsp.data;
@@ -45,12 +46,12 @@ export class SignupComponent {
 
   public doSignup() {
     if (this.email == '' || this.password == '') {
-      this.showSnackBar('Email i lozinka su obavezna polja', 'error');
+      this.utils.showSnackBar('Email i lozinka su obavezna polja', 'error', this.snackBar);
       return;
     }
 
     if (this.password !== this.repeatPassword) {
-      this.showSnackBar('Lozinke se ne podudaraju', 'error');
+      this.utils.showSnackBar('Lozinke se ne podudaraju', 'error', this.snackBar);
       return;
     }
 
@@ -66,21 +67,10 @@ export class SignupComponent {
     });
 
     if (result) {
-      this.showSnackBar('Uspešno ste se registrovali!', 'success');
+      this.utils.showSnackBar('Uspešno ste se registrovali!', 'success', this.snackBar);
       this.router.navigate(['/login']);
     } else {
-      this.showSnackBar('Email adresa je već u upotrebi', 'error');
+      this.utils.showSnackBar('Email adresa je već u upotrebi', 'error', this.snackBar);
     }
-  }
-
-  private showSnackBar(message: string, type: 'success' | 'error'): void {
-    const config = {
-      duration: 3000,
-      horizontalPosition: 'center' as const,
-      verticalPosition: 'top' as const,
-      panelClass: type === 'success' ? ['success-snackbar'] : ['error-snackbar']
-    };
-
-    this.snackBar.open(message, 'Zatvori', config);
   }
 }
