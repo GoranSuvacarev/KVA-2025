@@ -73,7 +73,7 @@ export class UserService {
         return false
     }
 
-    static changeTicketStatus(state: 'watched' , id: number, title : string) {
+    static changeTicketStatus(id: number, title : string) {
         const active = this.getActiveUser()
         if (active) {
             const arr = this.retrieveUsers()
@@ -81,7 +81,7 @@ export class UserService {
                 if (user.email == active.email) {
                     for (let ticket of user.tickets) {
                         if (ticket.id == id) {
-                            ticket.status = state
+                            ticket.status = 'watched'
                         }
                     }
                     localStorage.setItem('users', JSON.stringify(arr))

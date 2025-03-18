@@ -17,4 +17,5 @@ export interface MovieModel {
     movieGenres: {
         genre : GenreModel
     }[]
+    shortUrl : string
 }

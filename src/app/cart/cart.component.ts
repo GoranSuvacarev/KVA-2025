@@ -53,7 +53,7 @@ export class CartComponent {
       }
     }
 
-    if (UserService.changeTicketStatus('watched', ticket.id, ticket.title)) {
+    if (UserService.changeTicketStatus(ticket.id, ticket.title)) {
       this.loadCart()
       this.utils.showSnackBar('Karta za ' + ticket.title + ' je uspešno kupljena', 'success', this.snackBar);
     }
