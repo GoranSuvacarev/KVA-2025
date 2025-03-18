@@ -60,7 +60,7 @@
 </div>
 
 <div *ngIf="movies" class="movies">
-  <mat-card class="movie" appearance="outlined" *ngFor="let movie of filteredMovies" (click)="goToDetails(movie.movieId)">
+  <mat-card class="movie" appearance="outlined" *ngFor="let movie of filteredMovies" (click)="goToDetails(movie.shortUrl)">
     <img mat-card-image [src]="movie.poster" [alt]="movie.title">
     <mat-card-content>
       <h1 class="naslov">{{movie.title}}</h1>

@@ -84,8 +84,8 @@ export class HomeComponent {
       })
   }
 
-  goToDetails(movieId: number) {
-    this.router.navigate(['/details', movieId]);
+  goToDetails(shortUrl: string) {
+    this.router.navigate(['/details', shortUrl]);
   }
 
   public doFilter() {

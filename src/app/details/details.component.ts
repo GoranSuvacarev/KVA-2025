@@ -28,7 +28,7 @@ export class DetailsComponent {
 
   public constructor(private route: ActivatedRoute, public utils: UtilsService, private snackBar: MatSnackBar) {
     route.params.subscribe(params => {
-      MovieService.getMovieById(params['id'])
+      MovieService.getMovieByUrl(params['shortUrl'])
         .then(rsp => {
           this.movie = rsp.data
         })

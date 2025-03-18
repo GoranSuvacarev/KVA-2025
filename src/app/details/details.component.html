@@ -10,7 +10,7 @@
 <app-loading *ngIf="!movie && !error"></app-loading>
 
 
-<div class="container">
+<div class="container" *ngIf="movie">
   <div *ngIf="movie" class="movie-details">
     <div class="movie-header">
 
@@ -59,7 +59,7 @@
   </div>
 </div>
 
-<div class="container">
+<div class="container" *ngIf="movie">
 
   <div class="screening-section">
     <h2>Projekcije</h2>
