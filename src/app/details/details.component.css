@@ -8,6 +8,8 @@
 .loading, .error {
   text-align: center;
   padding: 3rem 0;
+  display: flex;
+  justify-content: center;
 }
 
 .movie-details {
@@ -153,4 +155,9 @@
 :host ::ng-deep .success-snackbar .mat-mdc-button,
 :host ::ng-deep .error-snackbar .mat-mdc-button {
   color: white;
+}
+
+.container{
+  display: flex;
+  justify-content: center;
 }
